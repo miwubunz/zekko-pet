@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvlxvy7s6k6f6"]
+
+[ext_resource type="Script" path="res://main/scripts/control.gd" id="1_wsls5"]
+[ext_resource type="FontFile" uid="uid://bhda25a683q7r" path="res://main/fonts/Nunito-Bold.ttf" id="2_xhu50"]
+[ext_resource type="FontFile" uid="uid://db7wty6sb6r3i" path="res://main/fonts/Nunito-BoldItalic.ttf" id="3_qwc6r"]
+[ext_resource type="FontFile" uid="uid://dfrr1xexy0vwh" path="res://main/fonts/Nunito-BlackItalic.ttf" id="4_kd6ex"]
+[ext_resource type="FontFile" uid="uid://d3mmwmvyhggmn" path="res://main/fonts/Nunito-Black.ttf" id="5_k0wi1"]
+[ext_resource type="Texture2D" uid="uid://b8w31og4di0pe" path="res://main/sprites/arrow.png" id="6_x6xbi"]
+[ext_resource type="Script" path="res://main/scripts/bounce.gd" id="7_1p40v"]
+[ext_resource type="Texture2D" uid="uid://nmlde7tta6gy" path="res://main/sprites/x.png" id="8_xeuyp"]
+[ext_resource type="AudioStream" uid="uid://cjk765em0hj4n" path="res://main/sounds/untijjtled.wav" id="9_6mdw8"]
+[ext_resource type="AudioStream" uid="uid://barar30xh6ymv" path="res://main/sounds/open.wav" id="10_8nr7v"]
+[ext_resource type="AudioStream" uid="uid://57nbqnry0rwg" path="res://main/sounds/close.wav" id="11_uicy4"]
+[ext_resource type="AudioStream" uid="uid://bftjq40h7c8hb" path="res://main/music/tremolo.wav" id="12_avjl7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wsls5")
+
+[node name="txt" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 169.0
+offset_top = 522.0
+offset_right = 540.0
+offset_bottom = 644.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = -3
+theme_override_fonts/normal_font = ExtResource("2_xhu50")
+theme_override_fonts/italics_font = ExtResource("3_qwc6r")
+theme_override_fonts/bold_italics_font = ExtResource("4_kd6ex")
+theme_override_fonts/bold_font = ExtResource("5_k0wi1")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+fit_content = true
+visible_characters_behavior = 1
+
+[node name="arrow" type="TextureRect" parent="."]
+texture_filter = 3
+layout_mode = 0
+offset_left = 427.0
+offset_top = 524.0
+offset_right = 467.0
+offset_bottom = 564.0
+pivot_offset = Vector2(19, 19)
+texture = ExtResource("6_x6xbi")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("7_1p40v")
+
+[node name="x" type="TextureRect" parent="."]
+texture_filter = 3
+layout_mode = 0
+offset_left = 522.0
+offset_top = 529.0
+offset_right = 553.0
+offset_bottom = 562.0
+pivot_offset = Vector2(19, 19)
+texture = ExtResource("8_xeuyp")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("7_1p40v")
+
+[node name="sounds" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="talk" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("9_6mdw8")
+bus = &"sfx"
+
+[node name="appear" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("10_8nr7v")
+volume_db = 7.924
+bus = &"sfx"
+
+[node name="disappear" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("11_uicy4")
+volume_db = 7.924
+bus = &"sfx"
+
+[node name="bg" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_avjl7")
+volume_db = -16.838
+autoplay = true
+bus = &"music"
