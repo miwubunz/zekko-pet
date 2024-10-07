@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c582vgtca0w40"]
+[gd_scene load_steps=46 format=3 uid="uid://c582vgtca0w40"]
 
 [ext_resource type="Script" path="res://main/scripts/shop.gd" id="1_rxbqu"]
 [ext_resource type="FontFile" uid="uid://bk7uc16cbiy0s" path="res://main/fonts/Nunito-SemiBold.ttf" id="1_ufa3m"]
@@ -31,6 +31,7 @@
 [ext_resource type="FontFile" uid="uid://b7w85y3rlbbew" path="res://main/fonts/Nunito-LightItalic.ttf" id="26_g0nqd"]
 [ext_resource type="Script" path="res://main/scripts/meta.gd" id="28_sxaq7"]
 [ext_resource type="Texture2D" uid="uid://bw7xwdtin48dg" path="res://main/sprites/money.png" id="28_ywer8"]
+[ext_resource type="AudioStream" uid="uid://cjk765em0hj4n" path="res://main/sounds/untijjtled.wav" id="31_vsao2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br7bg"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -766,6 +767,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="buy" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("31_vsao2")
+pitch_scale = 1.49
 
 [node name="money" type="Control" parent="."]
 anchors_preset = 0
