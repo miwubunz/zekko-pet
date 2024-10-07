@@ -36,7 +36,7 @@ take care of ***zekko***, your new virtual pet
 - add clothes (or accesories maybe)
 
 ## credits
-- zekko and food sprites made by [laudi](https://x.com/laudi122)
+- zekko and food sprites made by [lauta](https://x.com/laudi122)
 - music, sound effects, ui, translations, writing and programming by [miwubunz](https://github.com/miwubunz) (me)
 - rounded sprites shader by [acgc99](https://godotshaders.com/author/acgc99)
 
