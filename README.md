@@ -40,7 +40,13 @@ take care of ***zekko***, your new virtual pet
 - music, sound effects, ui, translations, writing and programming by [miwubunz](https://github.com/miwubunz) (me)
 - rounded sprites shader by [acgc99](https://godotshaders.com/author/acgc99)
 
+
+
 ## license
 this project is licensed under the MIT License, see the [LICENSE](LICENSE) file for details
 
+<hr>
+
+if you find any bug or want to ask for any feature, feel free to open a issue ;p\
+\
 contributions are welcome ;3
