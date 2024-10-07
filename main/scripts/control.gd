@@ -1,8 +1,8 @@
 extends Control
 
 var timer = 0
-
-# note from miwu: i hate argentinian soccer fans
+var save_path = "user://date.inf"
+var save_path_data = "user://data.inf"
 
 @onready var talksfx = $sounds/talk
 @onready var open = $sounds/appear
@@ -17,7 +17,7 @@ var index = 0
 @onready var txt = $txt
 var finished = false
 
-var sentences = ["[center]Hi, I'm [b][i][wave]rin.[/wave][/i][/b]", "[center][shake][b][i]Please,[/i][/b][/shake] take care of me."]
+var sentences = ["[center]Hi, I'm [b][i][wave]zekko.[/wave][/i][/b]", "[center][shake][b][i]Please,[/i][/b][/shake] take care of me."]
 
 var sentence = ""
 
@@ -34,11 +34,15 @@ var l = false # variable so that a tween doesnt keep tweening every frame
 var toanim = 0 # whether the arrow or x sprite should be animated
 
 func _ready() -> void:
-	# make transparent window (not sure if it works on older versions of windows)
+	# make transparent window -- tested on windows 10 and linux mint 22
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true)
 	get_viewport().transparent_bg = true
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-	DisplayServer.window_set_size(Vector2i(700,700))
+	DisplayServer.window_set_size(Vector2i(1052,1052) / Vector2i(2,2)) 
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+	var screen = DisplayServer.screen_get_size()
+	var window = DisplayServer.window_get_size()
+	DisplayServer.window_set_position(Vector2(screen.x / 2 - window.x / 2, screen.y / 2 - window.y / 2))
 	
 	txt.text = sentences[sentencearray]
 	arrow.modulate.a = 0
@@ -46,7 +50,8 @@ func _ready() -> void:
 	await get_tree().create_timer(2).timeout
 	txt.visible = true
 	g = true
-	pass
+	save()
+	save_data()
 
 func _process(delta: float) -> void:
 	print(sentencearray)
@@ -95,11 +100,49 @@ func _process(delta: float) -> void:
 		create_tween().tween_property(txt, "modulate:a", 0, timetween)
 		able = false
 		closething()
+		bye()
 
 func talksound():
 	var e = randf_range(0.9,1.1)
 	talksfx.pitch_scale = e
 	talksfx.play()
+
+func save():
+	if !FileAccess.file_exists(save_path):
+		print("saved :3")
+		var file = FileAccess.open(save_path, FileAccess.WRITE)
+		file.store_string(Time.get_date_string_from_system())
+	else:
+		print("file already exists :p")
+
+func save_data():
+	var data = {
+		"items": [],
+		"mood": {
+			"happiness": 100,
+			"eatingness": 100,
+			"sleepiness": 0
+		},
+		"settings": {
+			"language": "en",
+			"money": 290,
+			"music": 0,
+			"vol": 17
+		}
+	}
+	
+	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
+	var json = JSON.stringify(data, "\t")
+	
+	file.store_line(json)
+	
+	file.close()
+	
+	print("saved :3")
+
+func bye():
+	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://main/scenes/main.tscn")
 
 #region animations
 func openthing():

@@ -10,14 +10,22 @@ config_version=5
 
 [application]
 
-config/name="rin-pet"
+config/name="zekko-pet"
+config/description="pet"
+run/main_scene="res://main/scenes/startup.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1, 1, 1, 0)
+boot_splash/show_image=false
+config/icon="res://icon.png"
+
+[autoload]
+
+controller="*res://main/scenes/controller.tscn"
 
 [display]
 
-window/size/viewport_width=700
-window/size/viewport_height=700
+window/size/viewport_width=1052
+window/size/viewport_height=1052
 window/stretch/mode="canvas_items"
 window/per_pixel_transparency/allowed=true
 
@@ -28,6 +36,21 @@ enter={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(156, 26),"global_position":Vector2(165, 72),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+click_left={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(280, 5),"global_position":Vector2(289, 51),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://main/translations/translations.en.translation", "res://main/translations/translations.es.translation")
+locale/locale_filter_mode=0
 
 [rendering]
 

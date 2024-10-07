@@ -1,0 +1,121 @@
+key,en,es
+WELCOME_1,"Hi, I'm zekko.","Holi, soy zekko."
+WELCOME_2,"Please, take care of me.","Porfa, cuida de mí."
+OPT_1,chat,charlar
+OPT_2,feed,alimentar
+OPT_3,shop,tienda
+OPT_4,settings,ajustes
+OPT_5,quit,salir
+FOOD,food,comida
+DRINKS,drinks,bebidas
+SETT,settings,ajustes
+MUS,music,música
+MUTE,no music (MUTE),sin música (SILENCIO)
+AGE,age: ,edad: 
+YEAR, year, año
+MONTH, month, mes
+WEEK, week, semana
+DAY, day, día
+PLURAL,s,es
+BURGER,burger,hamburguesa
+PIZZA,pizza,pizza
+FRIES,fries,papas fritas
+COOKIES,cookies,galletitas
+APPLE,red apple,manzana roja
+BREAD,bread,pan
+WATER,water,agua
+COLA,cola,cola
+JUICE,juice,jugo
+TEA,tea,té
+COFFEE,coffee,café
+POKE_1,>////<,>////<
+POKE_2,Hehe~,Jiji~
+POKE_3,[i]giggle[/i],[i]risita[/i]
+POKE_4,"Poke poke poke! Hehe, it tickles!","¡Pic pic pic! Jeje, ¡hace cosquillas!"
+POKE_5,You're my favorite human! :3,¡Eres mi humano favorito! :3
+POKE_6,"[i]boing[/i] Did I bounce? Hehe, that was fun!","[i]boing[/i] ¿Reboté? ¡Jiji, eso fue divertido!"
+POKE_7,Prrr...~,Prrr...~
+POKE_8,"[i]squish[/i] Oh, did I just wiggle? :3","[i]squish[/i] Oh, ¿acabo de rebotar? :3"
+POKE_9,"You like poking me, huh? Hehe~","Te gusta toquetearme, ¿eh? Jiji~"
+POKE_10,"If you keep poking, I might just turn into a super slime! >:3","Si sigues tocándome, ¡puede que me convierta en una super slime! >:3"
+SAD_1,I might need a cuddle... or a snack.,Podría necesitar un abrazo... o un snack.
+SAD_2,Why does the floor feel extra cold today?,¿Por qué el suelo está tan frío hoy?
+SAD_3,"Maybe if I close my eyes, the world will be better… or, y'know, full of snacks.","Quizá si cierro los ojos, el mundo será mejor... o, ya sabes, lleno de snacks."
+SAD_4,The world is just... bleh today.,El mundo está... bleh hoy.
+SAD_5,Maybe... I need some slime snuggles.,Tal vez... Necesito algunos acurrucamientos de slime.
+SAD_6,"[i]sigh[/i] It’s one of those ""melty"" days.","[i]suspiro[/i] Es uno de esos días de ""derretimiento""."
+SAD_7,I feel like a tiny puddle today…,Hoy me siento como un charquito…
+HAPPY_1,I feel like a bubble about to pop... in a good way!,Me siento como una burbuja a punto de explotar... ¡en el buen sentido!
+HAPPY_2,"Have you ever seen a happy slime? Well, you’re looking at one!","¿Has visto alguna vez una slime feliz? Pues, ¡estás viendo una!"
+HAPPY_3,I could give you a hug... but I’m all slimey!,Podría darte un abrazo... ¡pero estoy toda babosa!
+HAPPY_4,Look at me! Look at me!! I'm so wiggly! :3,¡Mírame! ¡¡Mírame!! ¡Soy tan serpenteante! :3
+HAPPY_5,OMG! Is it snack time? Or playtime? Or... BOTH?!,¡OH! ¿Es la hora de los snacks? ¿O la hora de jugar? O... ¡¿AMBAS?!
+HAPPY_6,WHEEEEEEEE!! [i]splat[/i] Hehe... oops!,¡¡WIIIIIIIIIIII!! [i]salpicón[/i] Jiji... ¡ups!
+EEPY_1,I think I’m turning into a puddle... Zzz...,Creo que me estoy convirtiendo en un charco... Zzz...
+EEPY_2,"Do slimes dream? If I do, I hope it’s about you. :3","¿Soñamos los slimes? Si lo hago, espero que sea sobre tí. :3"
+EEPY_3,"I’ll just... lay here... a little longer... snuggle me, okay?","Solo... me tumbaré aquí... un poco más... acurrúcame, ¿oki?"
+EEPY_4,Even slimes need rest... my goo is tired.,Incluso los slimes necesitan descansar... mi baba está cansada.
+EEPY_5,"Bouncing in circles is fun... but only for like, 3 minutes.","Saltar en círculos es divertido... pero sólo como por, 3 minutos."
+EEPY_6,You’re warm... can I nap on you? Just a bit?,Estás cálido... ¿Puedo tomar una siesta sobre ti? ¿Sólo un poquito?
+EEPY_7,Do slimes get sleepier the more they wiggle? Asking for a friend... [wave]Zzz...[/wave],¿Los slimes se duermen más cuanto más se mueven? Pregunto por un amigo... [wave]Zzz...[/wave]
+BEF_1,[wave][b]Whee![/b][/wave] I’m so bouncy and full of energy!,[wave][b]¡Wiiii![/b][/wave] ¡Estoy tan rebotona y llena de energía!
+BEF_2,Can I be your best friend forever?,¿Puedo ser tu mejor amiga para siempre?
+BEF_3,I wanna play [wave][b]ALL[/b][/wave] day!,¡Quiero jugar [wave][b]TODO[/b][/wave] el día!
+BEF_4,"If I could fly, I'd still wanna stay near you. :3","Si pudiera volar, seguiría queriendo estar cerca de ti. :3"
+BEF_5,"You like me, right? Right?? Hehe~","Te agrado, ¿verdad? ¿Verdad? Jiji~"
+BEF_6,Wanna squish me? Go ahead! I'm squishable! :3,¿Quieres apretarme? Apriétame. ¡Soy aprietable! :3
+BEF_7,You’re like the sun... but less burny! Hehe~,Eres como el sol... ¡pero menos ardiente! Jiji~
+BEF_8,If I roll around... where do I end up? Let’s find out!... I'm kidding!,Si ruedo... ¿dónde iré a parar? Averigüémoslo!... ¡Estoy bromeando!
+BEF_9,I’m a ball of energy! And squishiness!,¡Soy una bola de energía! ¡Y de achuchabilidad!
+BEF_10,If I could invent something... it’d be a [shake]never-ending[/shake] snack machine!,Si pudiera inventar algo... ¡sería una máquina de snacks [shake]inagotable![/shake]
+BEF_11,"What if we had a slime race? I bet I’d win... or, like, come in a close second! :3",¿Y si hiciéramos una carrera de slimes? Apuesto a que ganaría... ¡o quedaría en segundo lugar! :3
+AF_1,I think I'm getting cooler every day.,Creo que cada día soy más genial.
+AF_2,"I’m practically an adult now, right?","Ya soy prácticamente una adulta, ¿no?"
+AF_3,"Ugh, I’m so bored... Entertain me!","Agh, estoy tan aburrida... ¡Entreteneme!"
+AF_4,I feel like a big slime now. What do you think? Hehe~,Ahora me siento como una gran slime. ¿Qué opinas? Jiji~
+AF_5,I could take a nap... or not... what should I do?,Podría echarme una siesta... o no... ¿qué debería hacer?
+AF_6,"What do humans even do all day? Must be fun, right?","¿Qué hacen los humanos todo el día? Debe ser divertido, ¿no?"
+AF_7,"Bow before the slime queen... or monarch... or, y’know, slime.","Inclinad ante la reina slime... o monarca... o, ya sabes, slime."
+AF_8,"I’m like, totally squishy and fabulous.","Soy como, totalmente suave y fabulosa."
+AF_9,I wish there were more slimes... but I only need you. :3,Desearía que hubiera más slimes... pero sólo te necesito a tí. :3
+AF_10,I wonder what other slimes are doing right now... probably bouncing too.,Me pregunto qué estarán haciendo otros slimes ahora mismo... probablemente rebotar también.
+AF_11,If I bounce higher... do I level up? [i]boing[/i],Si reboto más alto... ¿subo de nivel? [i]boing[/i]
+AF_12,Do you think there’s a slime castle somewhere? I could totally be royalty!,¿Crees que hay un castillo slime en alguna parte? ¡Podría ser totalmente de la realeza!
+YEAR_1,I’ve seen many things... mostly from the floor.,He visto muchas cosas... la mayoría desde el suelo.
+YEAR_2,With age comes wisdom... and more squish.,Con la edad llega la sabiduría... y más elasticidad.
+YEAR_3,I’ve been around the block a few times... mostly in circles.,He dado unas cuantas vueltas a la manzana... casi siempre en círculos.
+YEAR_4,Remember when I was tiny? Good times... gooood times.,¿Recuerdas cuando era pequeñita? Buenos tiempos... bueeeenos tiempos.
+YEAR_5,I've seen the floor from every angle. It's... okay.,He visto el suelo desde todos los ángulos. Está... bien.
+YEAR_6,You wouldn’t understand... I’ve seen so much. So much dust.,No lo entenderías... He visto tanto. Tanto polvo.
+YEAR_7,"I've learned so much in my slimey years... like, how not to bump into walls.","He aprendido tanto en mis años de slime... como, cómo no chocar con las paredes."
+YEAR_8,Slimes like me have seen it all... especially snack crumbs.,Los slimes como yo han visto de todo... especialmente migas de snacks.
+YEAR_9,"When you’ve been around for this long, you learn that bouncing in circles is an art.","Cuando llevas tanto tiempo, aprendes que rebotar en círculos es un arte."
+YEAR_10,I feel like I could write a book on slime life... but I don’t have hands... bummer.,Siento que podría escribir un libro sobre la vida de los slimes... pero no tengo manos... qué lástima.
+ALL_1,Are you feeling okie? I hope so :3,¿Te encuentras bien? Eso espero :3
+ALL_2,"Today's really chill, don't you think?","Hoy es un día muy tranquilo, ¿no?"
+ALL_3,Do you think I could be a superhero? [wave][i]“Super Slime to the rescue!”[/i][/wave],¿Crees que podría ser una superheroína? [wave][i]“¡Super Slime al rescate!”[/i][/wave]
+ALL_4,"If you had a slime, and it wasn’t me... that would be silly! I’m the best one!","Si tuvieras una, slime y no fuera yo... ¡sería ridículo! ¡Soy la mejor!"
+ALL_5,What do you think clouds feel like? Are they just bigger slimes?,¿Cómo crees que se sienten las nubes? ¿ Acaso son solo slimes más grandes?
+ALL_6,"If I could have a hat, what kind should it be? I’m thinking something BIG!","Si pudiera tener una gorra, ¿de qué tipo sería? ¡Estoy pensando en algo GRANDE!"
+ALL_7,I wonder if there’s a Slime Olympics... I’d totally win the wiggling event!,Me pregunto si existen las Olimpiadas Slime... ¡Seguro que ganaría la competición de rebote!
+HUNGRY_1,Do you have any snacks? For... me?,¿Tienes algún snack? ¿Para... mí?
+HUNGRY_2,"I could eat... well, anything right now!","Podría comer... bueno, ¡cualquier cosa ahora mismo!"
+HUNGRY_3,Everything looks like food when you're this hungry...,Todo se ve como comida cuando tienes tanta hambre...
+HUNGRY_4,I might just fade away... into a puddle! [shake][b][i]feed me*[/i][/b][/shake],¡Podría evaporarme... en un charco! [shake][b][i]dame de comer[/i][/b][/shake]
+HUNGRY_5,"You wouldn't let your pet starve, would you? Look at this face! >:3","No dejarías que tu mascota se muera de hambre, ¿verdad? ¡Mira esta cara! >:3"
+HUNGRY_6,I could eat... anything. Like... the air. But real food would be better.,Podría comer... cualquier cosa. Como... el aire. Pero comida real sería mejor.
+HUNGRY_7,"If I could cook, I’d make slime cookies! But I can't... sooo... feed me?","¡Si pudiera cocinar, haría galletas slime! Pero no puedo... entoncessss... ¿me das de comer?"
+HUNGRY_8,"My tummy’s rumbling... well, if I had a tummy!","Me ruge la pancita... bueno, ¡si tuviera pancita!"
+HUNGRY_9,Can’t think... too hungry... slime fading...,No puedo pensar... demasiado hambrienta... la slime se esfuma...
+HUNGRY_10,"Snack time is the best time... and it’s ALWAYS snack time, right?","La hora de los snacks es el mejor momento... y SIEMPRE es la hora de los snacks, ¿no?"
+HUNGRY_11,"My goo is rumbling! That means snack time, right?","¡Mi baba está rugiendo! Eso significa que es la hora de los snacks, ¿no?"
+HUNGRY_12,I’m too cute to be this hungry! Someone save me with snacks!!,¡Soy demasiado linda para estar tan hambrienta! ¡¡Que alguien me salve con snacks!!
+HUNGRY_13,A hungry slime... is a sad slime. And I’m both! D:,Una slime hambrienta... es una slime triste. ¡Y soy ambas! D:
+HUNGRY_14,My goo’s getting all sluggish... need... fuel...,Mi baba se está poniendo lenta... necesito... combustible...
+HUNGRY_15,"I think my tummy is speaking slime language. And it’s saying, “FEED ME!”","Creo que mi pancita está hablando el lenguaje slime. Y está diciendo, “¡ALIMÉNTAME!”"
+HUNGRY_16,"If I could wish for anything, it’d be snacks... and more snacks! :3","Si pudiera desear algo, sería snacks... ¡y más snacks! :3"
+LANG,Language,Idioma
+BUY_1,[center]You [shake rate=180.0 level=30]surely[/shake] wanna buy [wave amp=50.0][b][i],[center]¿[shake rate=180.0 level=30]Seguro[/shake] que quieres comprar [wave amp=50.0][b][i]
+POOR,poor,pobre
+SLEEP,sleep,dormir
+WAKE,wake up,despertar

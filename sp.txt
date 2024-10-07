@@ -1,0 +1,256 @@
+Holi, soy zekko.
+Porfa, cuida de mí.
+
+charlar
+alimentar
+tienda
+ajustes
+salir
+
+comida
+bebidas
+ajustes
+música
+sin música (SILENCIO)
+edad: 
+ año
+ mes
+ semana
+ día
+es
+
+hamburguesa
+pizza
+papas fritas
+galletitas
+manzana roja
+pan
+
+agua
+cola
+jugo
+té
+café
+
+zekko dialogues:
+
+## poke:
+
+>////<
+
+Jiji~
+
+*risita*
+
+¡Pic pic pic! Jeje, ¡hace cosquillas!
+
+¡Eres mi humano favorito! :3
+
+*boing* ¿Reboté? ¡Jiji, eso fue divertido!
+
+Prrr...~
+
+*squish* Oh, ¿acabo de rebotar? :3
+
+Te gusta toquetearme, ¿eh? Jiji~
+
+Si sigues tocándome, ¡puede que me convierta en una super slime! >:3
+
+
+
+
+## chat:
+
+# saddy:
+
+Podría necesitar un abrazo... o un snack.
+
+¿Por qué el suelo está tan frío hoy?
+
+Quizá si cierro los ojos, el mundo será mejor... o, ya sabes, lleno de snacks.
+
+El mundo está... bleh hoy.
+
+Tal vez... Necesito algunos acurrucamientos de slime.
+
+*suspiro* Es uno de esos días de "derretimiento".
+
+Hoy me siento como un charquito...
+
+# happy:
+
+Me siento como una burbuja a punto de explotar... ¡en el buen sentido!
+
+¿Has visto alguna vez una slime feliz? Pues, ¡estás viendo una!
+
+Podría darte un abrazo... ¡pero estoy toda babosa!
+
+¡Mírame! ¡¡Mírame!! ¡Soy tan serpenteante! :3
+
+¡OH! ¿Es la hora de los snacks? ¿O la hora de jugar? O... ¡¿AMBAS?!
+
+¡¡WIIIIIIIIIIII!! *salpicón* Jiji... ¡ups!
+
+
+
+# sleepy eepy:
+
+Creo que me estoy convirtiendo en un charco... Zzz...
+
+¿Soñamos los slimes? Si lo hago, espero que sea sobre tí. :3
+
+Solo... me tumbaré aquí... un poco más... acurrúcame, ¿oki?
+
+Incluso los slimes necesitan descansar... mi baba está cansada.
+
+Saltar en círculos es divertido... pero sólo como por, 3 minutos.
+
+Estás cálido... ¿Puedo tomar una siesta sobre ti? ¿Sólo un poquito?
+
+¿Los slimes se duermen más cuanto más se mueven? Preguntando por un amigo... Zzz...
+
+
+# normal ~ before 5 months:
+
+¡Wiiii! ¡Estoy tan rebotona y llena de energía!
+
+¿Puedo ser tu mejor amiga para siempre?
+
+¡Quiero jugar TODO el día!
+
+Si pudiera volar, seguiría queriendo estar cerca de ti. :3
+
+Te agrado, ¿verdad? ¿Verdad? Jiji~
+
+¿Quieres apretarme? Apriétame. ¡Soy aprietable! :3
+
+Eres como el sol... ¡pero menos ardiente! Jiji~
+
+Si ruedo... ¿dónde iré a parar? Averigüémoslo!... ¡Estoy bromeando!
+
+¡Soy una bola de energía! ¡Y de achuchabilidad!
+
+Si pudiera inventar algo... ¡sería una máquina de snacks inagotable!
+
+¿Y si hiciéramos una carrera de slimes? Apuesto a que ganaría... ¡o quedaría en segundo lugar! :3
+
+
+
+# normal ~ after 5 months:
+
+Creo que cada día soy más genial.
+
+Ya soy prácticamente una adulta, ¿no?
+
+Agh, estoy tan aburrida... ¡Entreteneme!
+
+Ahora me siento como una gran slime. ¿Qué opinas? Jiji~
+
+Podría echarme una siesta... o no... ¿qué debería hacer?
+
+¿Qué hacen los humanos todo el día? Debe ser divertido, ¿no?
+
+Inclinadse ante la reina slime... o monarca... o, ya sabes, slime.
+
+Soy como, totalmente suave y fabulosa.
+
+Desearía que hubiera más slimes... pero sólo te necesito a tí. :3
+
+Me pregunto qué estarán haciendo otros slimes ahora mismo... probablemente rebotar también.
+
+Si reboto más alto... ¿subo de nivel? *boing*
+
+¿Crees que hay un castillo slime en alguna parte? ¡Podría ser totalmente de la realeza!
+
+
+# normal ~ after 1 year:
+
+He visto muchas cosas... la mayoría desde el suelo.
+
+Con la edad llega la sabiduría... y más elasticidad.
+
+He dado unas cuantas vueltas a la manzana... casi siempre en círculos.
+
+¿Recuerdas cuando era pequeñita? Buenos tiempos... bueeeenos tiempos.
+
+He visto el suelo desde todos los ángulos. Está... bien.
+
+No lo entenderías... He visto tanto. Tanto polvo.
+
+He aprendido tanto en mis años de slime... como, cómo no chocar con las paredes.
+
+Los slimes como yo han visto de todo... especialmente migas de snacks.
+
+Cuando llevas tanto tiempo, aprendes que rebotar en círculos es un arte.
+
+Siento que podría escribir un libro sobre la vida de los slimes... pero no tengo manos... qué lástima.
+
+
+
+# normal ~ all ages:
+
+¿Te encuentras bien? Eso espero :3
+
+Hoy es un día muy tranquilo, ¿no?
+
+¿Crees que podría ser una superheroína? «¡Super Slime al rescate!»
+
+Si tuvieras una, slime y no fuera yo... ¡sería ridículo! ¡Soy la mejor!
+
+¿Cómo crees que se sienten las nubes? ¿ Acaso son solo slimes más grandes?
+
+Si pudiera tener una gorra, ¿de qué tipo sería? ¡Estoy pensando en algo GRANDE!
+
+Me pregunto si existen las Olimpiadas Slime... ¡Seguro que ganaría la competición de rebote!
+
+
+
+# hungry:
+
+¿Tienes algún snack? ¿Para... mí?
+
+Podría comer... bueno, ¡cualquier cosa ahora mismo!
+
+Todo se ve como comida cuando tienes tanta hambre...
+
+¡Podría evaporarme... en un charco! *dame de comer*
+
+No dejarías que tu mascota se muera de hambre, ¿verdad? ¡Mira esta cara! >:3
+
+Podría comer... cualquier cosa. Como... el aire. Pero comida real sería mejor.
+
+¡Si pudiera cocinar, haría galletas slime! Pero no puedo... entoncessss... ¿me das de comer?
+
+Me ruge la pancita... bueno, ¡si tuviera pancita!
+
+No puedo pensar... demasiado hambrienta... la slime se esfuma...
+
+La hora de los snacks es el mejor momento... y SIEMPRE es la hora de los snacks, ¿no?
+
+¡Mi baba está rugiendo! Eso significa que es la hora de los snacks, ¿no?
+
+¡Soy demasiado linda para estar tan hambrienta! ¡¡Que alguien me salve con snacks!!
+
+Una slime hambrienta... es una slime triste. ¡Y soy ambas! D:
+
+Mi baba se está poniendo lenta... necesito... combustible...
+
+Creo que mi pancita está hablando el lenguaje slime. Y está diciendo, «¡ALIMÉNTAME!»
+
+Si pudiera desear algo, sería snacks... ¡y más snacks! :3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

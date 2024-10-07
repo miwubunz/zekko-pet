@@ -1,0 +1,4 @@
+bg: #2D2B2A
+acc: #FF85B0
+txt: #F4E8E0
+

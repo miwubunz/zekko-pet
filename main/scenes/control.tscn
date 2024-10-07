@@ -23,12 +23,11 @@ grow_vertical = 2
 script = ExtResource("1_wsls5")
 
 [node name="txt" type="RichTextLabel" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 169.0
-offset_top = 522.0
-offset_right = 540.0
-offset_bottom = 644.0
+offset_left = 1.0
+offset_top = 708.0
+offset_right = 1047.0
+offset_bottom = 830.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/shadow_offset_x = -3
@@ -36,20 +35,21 @@ theme_override_fonts/normal_font = ExtResource("2_xhu50")
 theme_override_fonts/italics_font = ExtResource("3_qwc6r")
 theme_override_fonts/bold_italics_font = ExtResource("4_kd6ex")
 theme_override_fonts/bold_font = ExtResource("5_k0wi1")
-theme_override_font_sizes/bold_italics_font_size = 30
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 70
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 fit_content = true
+visible_characters = 0
 visible_characters_behavior = 1
 
 [node name="arrow" type="TextureRect" parent="."]
 texture_filter = 3
 layout_mode = 0
-offset_left = 427.0
-offset_top = 524.0
-offset_right = 467.0
-offset_bottom = 564.0
-pivot_offset = Vector2(19, 19)
+offset_left = 743.0
+offset_top = 726.0
+offset_right = 857.0
+offset_bottom = 792.0
+pivot_offset = Vector2(30, 33)
 texture = ExtResource("6_x6xbi")
 expand_mode = 1
 stretch_mode = 4
@@ -58,11 +58,11 @@ script = ExtResource("7_1p40v")
 [node name="x" type="TextureRect" parent="."]
 texture_filter = 3
 layout_mode = 0
-offset_left = 522.0
-offset_top = 529.0
-offset_right = 553.0
-offset_bottom = 562.0
-pivot_offset = Vector2(19, 19)
+offset_left = 916.0
+offset_top = 733.0
+offset_right = 1020.0
+offset_bottom = 793.0
+pivot_offset = Vector2(30, 33)
 texture = ExtResource("8_xeuyp")
 expand_mode = 1
 stretch_mode = 4
@@ -89,6 +89,6 @@ bus = &"sfx"
 
 [node name="bg" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_avjl7")
-volume_db = -16.838
+volume_db = -8.914
 autoplay = true
 bus = &"music"
