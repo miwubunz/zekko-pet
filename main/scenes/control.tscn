@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvlxvy7s6k6f6"]
+[gd_scene load_steps=27 format=3 uid="uid://bvlxvy7s6k6f6"]
 
 [ext_resource type="Script" path="res://main/scripts/control.gd" id="1_wsls5"]
 [ext_resource type="FontFile" uid="uid://bhda25a683q7r" path="res://main/fonts/Nunito-Bold.ttf" id="2_xhu50"]
@@ -12,6 +12,298 @@
 [ext_resource type="AudioStream" uid="uid://barar30xh6ymv" path="res://main/sounds/open.wav" id="10_8nr7v"]
 [ext_resource type="AudioStream" uid="uid://57nbqnry0rwg" path="res://main/sounds/close.wav" id="11_uicy4"]
 [ext_resource type="AudioStream" uid="uid://bftjq40h7c8hb" path="res://main/music/tremolo.wav" id="12_avjl7"]
+[ext_resource type="Shader" path="res://main/shaders/corners.gdshader" id="13_7hfe8"]
+[ext_resource type="Texture2D" uid="uid://c2tfgcaxdpr4g" path="res://main/sprites/instructions/1.png" id="13_gxpbv"]
+[ext_resource type="Texture2D" uid="uid://ciljh2iognrcj" path="res://main/sprites/instructions/2.png" id="14_moyb8"]
+[ext_resource type="FontFile" uid="uid://bk7uc16cbiy0s" path="res://main/fonts/Nunito-SemiBold.ttf" id="14_u8o7t"]
+[ext_resource type="Texture2D" uid="uid://dgchtq0cdm16x" path="res://main/sprites/instructions/3.png" id="15_nnwn5"]
+[ext_resource type="Texture2D" uid="uid://n6sqywgfwk0d" path="res://main/sprites/instructions/4.png" id="16_kpkhn"]
+[ext_resource type="StyleBox" uid="uid://deknxvtrrv8n2" path="res://main/styles/button_send.tres" id="19_j3vm4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fs1f4"]
+shader = ExtResource("13_7hfe8")
+shader_parameter/radius_scale = 0.3
+shader_parameter/rounded_corner_top_left = true
+shader_parameter/rounded_corner_top_right = true
+shader_parameter/rounded_corner_bottom_left = true
+shader_parameter/rounded_corner_bottom_right = true
+shader_parameter/width = 1.0
+shader_parameter/height = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qp3ev"]
+shader = ExtResource("13_7hfe8")
+shader_parameter/radius_scale = 0.3
+shader_parameter/rounded_corner_top_left = true
+shader_parameter/rounded_corner_top_right = true
+shader_parameter/rounded_corner_bottom_left = true
+shader_parameter/rounded_corner_bottom_right = true
+shader_parameter/width = 1.0
+shader_parameter/height = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0swf"]
+shader = ExtResource("13_7hfe8")
+shader_parameter/radius_scale = 0.2
+shader_parameter/rounded_corner_top_left = true
+shader_parameter/rounded_corner_top_right = true
+shader_parameter/rounded_corner_bottom_left = true
+shader_parameter/rounded_corner_bottom_right = true
+shader_parameter/width = 1.0
+shader_parameter/height = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_726gc"]
+
+[sub_resource type="Animation" id="Animation_ltr3p"]
+resource_name = "k"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1.1),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 1.1),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect3:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect4:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.266667, 1.26667),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 1.26667),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Button:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.4, 1.4),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Button:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.4, 1.4),
+"transitions": PackedFloat32Array(0.133972, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uawr3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect3:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect4:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Button:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Button:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m6px"]
+_data = {
+"RESET": SubResource("Animation_uawr3"),
+"k": SubResource("Animation_ltr3p")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -30,7 +322,6 @@ offset_right = 1047.0
 offset_bottom = 830.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 3
-theme_override_constants/shadow_offset_x = -3
 theme_override_fonts/normal_font = ExtResource("2_xhu50")
 theme_override_fonts/italics_font = ExtResource("3_qwc6r")
 theme_override_fonts/bold_italics_font = ExtResource("4_kd6ex")
@@ -41,6 +332,7 @@ bbcode_enabled = true
 fit_content = true
 visible_characters = 0
 visible_characters_behavior = 1
+visible_ratio = 0.0
 
 [node name="arrow" type="TextureRect" parent="."]
 texture_filter = 3
@@ -92,3 +384,135 @@ stream = ExtResource("12_avjl7")
 volume_db = -8.914
 autoplay = true
 bus = &"music"
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_fs1f4")
+layout_mode = 0
+offset_left = 85.0
+offset_top = 152.0
+offset_right = 351.0
+offset_bottom = 418.0
+pivot_offset = Vector2(133, 133)
+texture = ExtResource("13_gxpbv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TextureRect"]
+layout_mode = 0
+offset_top = 283.0
+offset_right = 967.0
+offset_bottom = 503.0
+scale = Vector2(0.28, 0.28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.607843)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("14_u8o7t")
+theme_override_fonts/bold_font = ExtResource("5_k0wi1")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[center][b][wave]left click[/wave][/b] to open the [wave]interaction menu![/wave]"
+fit_content = true
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_qp3ev")
+offset_left = 404.0
+offset_top = 152.0
+offset_right = 670.0
+offset_bottom = 418.0
+pivot_offset = Vector2(133, 133)
+texture = ExtResource("14_moyb8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TextureRect2"]
+offset_top = 283.0
+offset_right = 967.0
+offset_bottom = 503.0
+scale = Vector2(0.28, 0.28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.607843)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("14_u8o7t")
+theme_override_fonts/bold_font = ExtResource("5_k0wi1")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[center][wave][b]hold[/b][/wave] to move zekko around!"
+fit_content = true
+
+[node name="TextureRect3" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_h0swf")
+offset_left = 720.0
+offset_top = 152.0
+offset_right = 986.0
+offset_bottom = 418.0
+pivot_offset = Vector2(133, 133)
+texture = ExtResource("15_nnwn5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TextureRect3"]
+offset_top = 283.0
+offset_right = 967.0
+offset_bottom = 503.0
+scale = Vector2(0.28, 0.28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.607843)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("14_u8o7t")
+theme_override_fonts/bold_font = ExtResource("5_k0wi1")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[center][wave][b]press[/b][/wave] to poke!"
+fit_content = true
+
+[node name="TextureRect4" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_h0swf")
+offset_left = 404.0
+offset_top = 587.0
+offset_right = 670.0
+offset_bottom = 853.0
+pivot_offset = Vector2(133, 133)
+texture = ExtResource("16_kpkhn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TextureRect4"]
+offset_top = 283.0
+offset_right = 967.0
+offset_bottom = 503.0
+scale = Vector2(0.28, 0.28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.607843)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/normal_font = ExtResource("14_u8o7t")
+theme_override_fonts/bold_font = ExtResource("5_k0wi1")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[center][wave][b]buy food[/b][/wave] to feed zekko!"
+fit_content = true
+
+[node name="Button" type="Button" parent="Control"]
+offset_left = 767.0
+offset_top = 920.0
+offset_right = 987.0
+offset_bottom = 1010.0
+theme_override_fonts/font = ExtResource("14_u8o7t")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_726gc")
+theme_override_styles/hover = ExtResource("19_j3vm4")
+theme_override_styles/pressed = ExtResource("19_j3vm4")
+theme_override_styles/normal = ExtResource("19_j3vm4")
+text = "alrighty"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_6m6px")
+}
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

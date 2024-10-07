@@ -25,7 +25,7 @@ var index = 0
 # items
 var path = {
 	"food": [
-		"burger.png", "pizza.png", "fries.png", "cookie.png", "apple.png", "bread.png"
+		"burger.png", "pizza.png", "fries.png", "cookies.png", "apple.png", "bread.png"
 	],
 	"drinks": [
 		"water.png", "cola.png", "juice.png", "tea.png", "coffee.png"

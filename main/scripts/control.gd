@@ -4,6 +4,9 @@ var timer = 0
 var save_path = "user://date.inf"
 var save_path_data = "user://data.inf"
 
+@onready var controluwu = $Control
+@onready var anims = $Control/AnimationPlayer
+
 @onready var talksfx = $sounds/talk
 @onready var open = $sounds/appear
 @onready var close = $sounds/disappear
@@ -141,8 +144,9 @@ func save_data():
 	print("saved :3")
 
 func bye():
-	await get_tree().create_timer(2).timeout
-	get_tree().change_scene_to_file("res://main/scenes/main.tscn")
+	await get_tree().create_timer(1).timeout
+	anims.play("k")
+	controluwu.visible = true
 
 #region animations
 func openthing():
@@ -167,3 +171,8 @@ func closething():
 			create_tween().tween_property(x, "scale:y", 1.5, timetween).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 			create_tween().tween_property(x, "modulate:a", 0, 0.2)
 #endregion
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main/scenes/main.tscn")
+	pass # Replace with function body.

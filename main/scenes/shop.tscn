@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c582vgtca0w40"]
+[gd_scene load_steps=45 format=3 uid="uid://c582vgtca0w40"]
 
 [ext_resource type="Script" path="res://main/scripts/shop.gd" id="1_rxbqu"]
 [ext_resource type="FontFile" uid="uid://bk7uc16cbiy0s" path="res://main/fonts/Nunito-SemiBold.ttf" id="1_ufa3m"]
@@ -14,7 +14,7 @@
 [ext_resource type="FontFile" uid="uid://kyvppm4lb7jl" path="res://main/fonts/Nunito-ExtraBold.ttf" id="12_7lko2"]
 [ext_resource type="Texture2D" uid="uid://bqaeh8t1hvje1" path="res://main/sprites/food/pizza.png" id="13_27gis"]
 [ext_resource type="Texture2D" uid="uid://c4dtf6jksckvg" path="res://main/sprites/food/fries.png" id="15_6kmjk"]
-[ext_resource type="Texture2D" uid="uid://8cbdfhk5ih2" path="res://main/sprites/food/cookie.png" id="16_goduy"]
+[ext_resource type="Texture2D" uid="uid://8cbdfhk5ih2" path="res://main/sprites/food/cookies.png" id="16_goduy"]
 [ext_resource type="Texture2D" uid="uid://dgm6qekxcrqmk" path="res://main/sprites/food/apple.png" id="17_a34o8"]
 [ext_resource type="Texture2D" uid="uid://c2hbuq7xi3ajf" path="res://main/sprites/food/bread.png" id="18_g3w4y"]
 [ext_resource type="Script" path="res://main/scripts/item.gd" id="19_s58jj"]
@@ -23,9 +23,13 @@
 [ext_resource type="Texture2D" uid="uid://cu6hkftu5xw0o" path="res://main/sprites/drinks/juice.png" id="22_k2gap"]
 [ext_resource type="Texture2D" uid="uid://bl6e8no82v056" path="res://main/sprites/drinks/tea.png" id="23_dodw6"]
 [ext_resource type="Texture2D" uid="uid://cnnsg8uimocyq" path="res://main/sprites/drinks/coffee.png" id="24_4bmk5"]
+[ext_resource type="FontFile" uid="uid://bnwxv70lrkpri" path="res://main/fonts/Nunito-Regular.ttf" id="24_xmufe"]
 [ext_resource type="Script" path="res://main/scripts/yus_or_nah.gd" id="25_5rfp3"]
+[ext_resource type="FontFile" uid="uid://d3mmwmvyhggmn" path="res://main/fonts/Nunito-Black.ttf" id="25_65co4"]
 [ext_resource type="FontFile" uid="uid://bhda25a683q7r" path="res://main/fonts/Nunito-Bold.ttf" id="25_d6yfh"]
 [ext_resource type="FontFile" uid="uid://db7wty6sb6r3i" path="res://main/fonts/Nunito-BoldItalic.ttf" id="25_hl1qd"]
+[ext_resource type="FontFile" uid="uid://b7w85y3rlbbew" path="res://main/fonts/Nunito-LightItalic.ttf" id="26_g0nqd"]
+[ext_resource type="Script" path="res://main/scripts/meta.gd" id="28_sxaq7"]
 [ext_resource type="Texture2D" uid="uid://bw7xwdtin48dg" path="res://main/sprites/money.png" id="28_ywer8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br7bg"]
@@ -74,6 +78,33 @@ corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0cbv"]
 
+[sub_resource type="Animation" id="Animation_voxgr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 1091)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_kagms"]
 resource_name = "notif"
 length = 1.3
@@ -100,33 +131,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_voxgr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(18, 1091)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RichTextLabel:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhsrn"]
@@ -328,6 +332,7 @@ offset_right = 983.0
 offset_bottom = 984.0
 
 [node name="food" type="GridContainer" parent="items"]
+layout_mode = 0
 offset_left = 66.0
 offset_top = 58.0
 offset_right = 602.0
@@ -488,6 +493,7 @@ label_settings = SubResource("LabelSettings_ffpcf")
 horizontal_alignment = 1
 
 [node name="drinks" type="GridContainer" parent="items"]
+layout_mode = 0
 offset_left = 66.0
 offset_top = 58.0
 offset_right = 602.0
@@ -629,6 +635,7 @@ label_settings = SubResource("LabelSettings_ffpcf")
 horizontal_alignment = 1
 
 [node name="settings" type="GridContainer" parent="items"]
+layout_mode = 0
 offset_left = 29.0
 offset_top = 22.0
 offset_right = 602.0
@@ -640,6 +647,7 @@ theme_override_constants/v_separation = 50
 layout_mode = 2
 
 [node name="menubutton" type="MenuButton" parent="items/settings/Control"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 16.0
 offset_right = 238.0
@@ -660,6 +668,34 @@ popup/item_0/checked = true
 popup/item_1/text = "Español"
 popup/item_1/checkable = 2
 popup/item_1/id = 1
+
+[node name="credits" type="RichTextLabel" parent="items/settings/Control"]
+modulate = Color(0.831373, 0.745098, 0.596078, 1)
+layout_mode = 0
+offset_top = 123.0
+offset_right = 570.0
+offset_bottom = 746.0
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("24_xmufe")
+theme_override_fonts/italics_font = ExtResource("25_d6yfh")
+theme_override_fonts/bold_italics_font = ExtResource("26_g0nqd")
+theme_override_fonts/bold_font = ExtResource("25_65co4")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 70
+bbcode_enabled = true
+text = "[b]credits[/b]
+[i]programmers[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] [b][i]- main programmer[/i][/b]
+[i]ui[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] 
+[i]artist[/i]
+[url=https://x.com/laudi122]lauta[/url] [b][i]- food and zekko sprites[/i][/b]
+[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- some ui icons[/i][/b]
+[i]shaders[/i]
+[url=https://godotshaders.com/author/acgc99/]acgc99[/url] [b][i]- rounded image corners[/i][/b]"
+script = ExtResource("28_sxaq7")
 
 [node name="prompt" type="Control" parent="."]
 anchors_preset = 0
@@ -692,6 +728,7 @@ flat = true
 
 [node name="na" type="Button" parent="prompt"]
 modulate = Color(1, 0.594507, 0.581231, 1)
+layout_mode = 0
 offset_left = 254.0
 offset_top = 80.9999
 offset_right = 343.0
@@ -761,9 +798,9 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 18.0
-offset_top = 789.0
+offset_top = 1091.0
 offset_right = 363.0
-offset_bottom = 905.0
+offset_bottom = 1207.0
 theme_override_fonts/normal_font = ExtResource("25_d6yfh")
 theme_override_font_sizes/normal_font_size = 70
 text = "POOR"
@@ -771,5 +808,6 @@ scroll_active = false
 
 [connection signal="drag_ended" from="slider" to="." method="_on_slider_changed"]
 [connection signal="file_selected" from="filedlg" to="." method="_on_filedlg_file_selected"]
+[connection signal="meta_clicked" from="items/settings/Control/credits" to="items/settings/Control/credits" method="_on_meta_clicked"]
 [connection signal="pressed" from="prompt/ye" to="prompt" method="_on_ye_pressed"]
 [connection signal="pressed" from="prompt/na" to="prompt" method="_on_na_pressed"]
