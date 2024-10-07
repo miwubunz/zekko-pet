@@ -693,6 +693,10 @@ text = "[b]credits[/b]
 [i]artist[/i]
 [url=https://x.com/laudi122]lauta[/url] [b][i]- food and zekko sprites[/i][/b]
 [url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- some ui icons[/i][/b]
+[i]translators[/i]
+[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- spanish[/i][/b]
+[i]writers[/i]
+[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- zekko's quotes[/i][/b]
 [i]shaders[/i]
 [url=https://godotshaders.com/author/acgc99/]acgc99[/url] [b][i]- rounded image corners[/i][/b]"
 script = ExtResource("28_sxaq7")
