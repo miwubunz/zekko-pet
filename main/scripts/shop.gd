@@ -53,11 +53,10 @@ func _notification(what: int) -> void:
 		get_tree().change_scene_to_file("res://main/scenes/main.tscn")
 
 func thingy_id(id):
-	if id < 3:
-		for i in range(menu.get_popup().get_item_count()):
-			menu.get_popup().set_item_checked(i, false)
+	for i in range(menu.get_popup().get_item_count()):
+		menu.get_popup().set_item_checked(i, false)
 	
-		menu.get_popup().set_item_checked(id, true)
+	menu.get_popup().set_item_checked(id, true)
 	
 	print(id)
 	match id:
@@ -80,6 +79,33 @@ func thingy_id(id):
 			print("putgin")
 			music.stop()
 			music.stream = load("res://main/music/shop2.wav")
+			music.play()
+			file_data.settings.music = id
+			var file = FileAccess.open(save_path_data, FileAccess.WRITE)
+			file.store_string(JSON.stringify(file_data, "\t"))
+			file.close()
+		3:
+			print("putgin")
+			music.stop()
+			music.stream = load("res://main/music/shop3.wav")
+			music.play()
+			file_data.settings.music = id
+			var file = FileAccess.open(save_path_data, FileAccess.WRITE)
+			file.store_string(JSON.stringify(file_data, "\t"))
+			file.close()
+		4:
+			print("putgin")
+			music.stop()
+			music.stream = load("res://main/music/shop4.wav")
+			music.play()
+			file_data.settings.music = id
+			var file = FileAccess.open(save_path_data, FileAccess.WRITE)
+			file.store_string(JSON.stringify(file_data, "\t"))
+			file.close()
+		5:
+			print("putgin")
+			music.stop()
+			music.stream = load("res://main/music/shop5.wav")
 			music.play()
 			file_data.settings.music = id
 			var file = FileAccess.open(save_path_data, FileAccess.WRITE)

@@ -293,16 +293,24 @@ theme_override_styles/pressed = ExtResource("10_nu85t")
 theme_override_styles/normal = ExtResource("10_nu85t")
 text = "MUS"
 flat = false
-item_count = 3
+item_count = 6
 popup/item_0/text = "MUTE"
 popup/item_0/checkable = 2
 popup/item_1/text = "shop1"
 popup/item_1/checkable = 2
-popup/item_1/checked = true
 popup/item_1/id = 1
 popup/item_2/text = "shop2"
 popup/item_2/checkable = 2
 popup/item_2/id = 2
+popup/item_3/text = "shop3"
+popup/item_3/checkable = 2
+popup/item_3/id = 3
+popup/item_4/text = "shop4"
+popup/item_4/checkable = 2
+popup/item_4/id = 4
+popup/item_5/text = "shop5"
+popup/item_5/checkable = 2
+popup/item_5/id = 5
 
 [node name="bg" type="AudioStreamPlayer" parent="."]
 bus = &"music"
