@@ -34,6 +34,7 @@ take care of ***zekko***, your new virtual pet
 - improve ui
 - add more items
 - add clothes (or accesories maybe)
+- make app invisible on the taskbar
 
 ## credits
 - zekko and food sprites made by [lauta](https://x.com/laudi122)
@@ -47,6 +48,6 @@ this project is licensed under the MIT License, see the [LICENSE](LICENSE) file 
 
 <hr>
 
-if you find any bug or want to ask for any feature, feel free to open a issue ;p\
-\
+if you find any bug or want to ask for any feature, feel free to open a issue ;p
+
 contributions are welcome ;3
