@@ -2,4 +2,4 @@ extends RichTextLabel
 
 func _on_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(meta)
-	pass # Replace with function body.
+	pass

@@ -10,11 +10,6 @@ var late = false
 
 @onready var control = $".."
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 func _process(delta: float) -> void:
 	print(sleepiness)
 	time = Time.get_time_string_from_system().split(":")

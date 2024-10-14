@@ -8,9 +8,6 @@ var day
 
 func _ready() -> void:
 	age()
-	pass # Replace with function body.
-
-func _process(delta: float) -> void:
 	pass
 
 func age():

@@ -16,7 +16,6 @@ var money = 9
 var user_path = "user://date.inf"
 var save_path_data = "user://data.inf"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, false)
@@ -41,8 +40,6 @@ func _ready() -> void:
 		"settings":
 			button2.clickie()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$money/money.text = str(money)
 	music.volume_db = linear_to_db(slider.value / 100)
@@ -156,7 +153,7 @@ func _on_slider_changed(value: float) -> void:
 	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
 	file.store_string(JSON.stringify(file_data, "\t"))
 	file.close()
-	pass # Replace with function body.
+	pass
 
 func update_money():
 	file_data.settings.money = money

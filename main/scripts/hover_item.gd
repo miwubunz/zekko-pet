@@ -17,16 +17,13 @@ var time_tween = 0.1
 
 var hovering = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("mouse_entered", Callable(self, "hover"))
 	connect("mouse_exited", Callable(self, "unhover"))
 	tooltiptxt.modulate.a = 0
 	print(str(id) + tag)
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var pos = get_global_mouse_position() - offset
 	tooltiptxt.position = lerp(tooltiptxt.position, pos, spd)

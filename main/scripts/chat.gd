@@ -40,14 +40,13 @@ var l = false # variable so that a tween doesnt keep tweening every frame
 
 var talking = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TranslationServer.set_locale("en")
 	
 	
 	$bg.scale = Vector2(0,0)
 	txt.text = ""
-	pass # Replace with function body.
+	pass
 
 
 func _process(delta: float) -> void:

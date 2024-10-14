@@ -2,18 +2,8 @@ extends Control
 
 var to_select = false
 
-
-
 var time_tween = 0.5
 var p
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func call_prompt(obj):
 	if !to_select:
@@ -39,10 +29,10 @@ func uncall_prompt(yes):
 func _on_ye_pressed() -> void:
 	if to_select:
 		uncall_prompt(true)
-	pass # Replace with function body.
+	pass
 
 
 func _on_na_pressed() -> void:
 	if to_select:
 		uncall_prompt(false)
-	pass # Replace with function body.
+	pass

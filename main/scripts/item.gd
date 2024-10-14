@@ -21,17 +21,11 @@ var shaking = false
 
 var shake = 70
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("mouse_entered", Callable(self, "hover"))
 	connect("mouse_exited", Callable(self, "unhover"))
 	connect("pressed", Callable(self,"press"))
 	pivot_offset = size / Vector2(2,2)
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	pass
 
 func press():

@@ -13,7 +13,6 @@ var able = true
 
 @onready var og_color = self.get_theme_color("font_color")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("mouse_entered", Callable(self, "enter"))
 	connect("mouse_exited", Callable(self, "leave"))
@@ -30,11 +29,6 @@ func _ready() -> void:
 	drinks.mouse_filter = MOUSE_FILTER_IGNORE
 	sett.mouse_filter = MOUSE_FILTER_IGNORE
 	print(og_color)
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	pass
 
 func enter():

@@ -82,14 +82,6 @@ func _ready() -> void:
 	
 
 	idle()
-	
-	var win_size = Vector2i(350, 350)
-	DisplayServer.window_set_size(win_size)
-	var screen_size = DisplayServer.screen_get_size()
-	await get_tree().process_frame
-	var window_position = screen_size - win_size
-	
-	DisplayServer.window_set_position(window_position)
 	for i in path.keys():
 		loaded[i] = {}
 		for e in path[i]:
@@ -101,6 +93,18 @@ func _ready() -> void:
 	$rin.sleepiness = file_data.mood.sleepiness
 	print(file_data.items.size())
 	tooltiptxt.modulate.a = 0
+	var win_size = Vector2i(350, 350)
+	DisplayServer.window_set_size(win_size)
+	await get_tree().process_frame
+	if file_data.settings.pos.y == null or file_data.settings.pos.x == null:
+		var screen_size = DisplayServer.screen_get_size()
+		var window_position = screen_size - win_size
+		
+		DisplayServer.window_set_position(window_position)
+		await get_tree().process_frame
+		save_pos()
+	else:
+		DisplayServer.window_set_position(Vector2i(file_data.settings.pos.x, file_data.settings.pos.y))
 
 
 func _process(delta: float) -> void:
@@ -225,10 +229,13 @@ func _on_id_pressed(id: int) -> void:
 			popup.set_item_disabled(1, true)
 			inv2.visible = true
 		2:
+			save_pos()
 			controller.send_data("res://main/scenes/shop.tscn", "food")
 		3:
+			save_pos()
 			controller.send_data("res://main/scenes/shop.tscn", "settings")
 		4:
+			save_pos()
 			able = false
 			to_look = false
 			create_tween().tween_property(self, "modulate:a", 0, 0.5)
@@ -297,7 +304,7 @@ func _on_money_giver_timeout() -> void:
 	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
 	file.store_string(JSON.stringify(file_data, "\t"))
 	file.close()
-	pass # Replace with function body.
+	pass
 
 func update_mood(happiness, eatingness, sleepiness):
 	file_data.mood.happiness = happiness
@@ -350,4 +357,11 @@ func _on_button_pressed() -> void:
 	inventoring = false
 	popup.set_item_disabled(1, false)
 	inv2.visible = false
-	pass # Replace with function body.
+	pass
+
+func save_pos():
+	file_data.settings.pos.y = DisplayServer.window_get_position().y
+	file_data.settings.pos.x = DisplayServer.window_get_position().x
+	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
+	file.store_string(JSON.stringify(file_data, "\t"))
+	file.close()
