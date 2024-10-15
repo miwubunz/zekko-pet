@@ -39,7 +39,7 @@ take care of ***zekko***, your new desktop pet
 
 ## credits
 - zekko and food sprites made by [lauta](https://x.com/laudi122)
-- music, sound effects, ui, translations, writing and programming by [miwubunz](https://github.com/miwubunz) (me)
+- music, sound effects, ui, translations, writing and programming by [miwubunz](https://github.com/miwubunz)
 - rounded sprites shader by [acgc99](https://godotshaders.com/author/acgc99)
 
 ## license
