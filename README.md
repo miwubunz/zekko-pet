@@ -35,6 +35,7 @@ take care of ***zekko***, your new desktop pet
 - add more items
 - add clothes (or accesories maybe)
 - make app invisible on the taskbar
+- show different sprites when zekko's sleepy, hungry, and sad
 
 ## credits
 - zekko and food sprites made by [lauta](https://x.com/laudi122)
@@ -48,10 +49,10 @@ this project is licensed under the MIT License, see the [LICENSE](LICENSE) file 
 
 if you find any bug or want to ask for any feature, feel free to open a issue ;p
 
-contributions are welcome ;3
+## contributions
+any contributions are fully welcome ;3
 
 ## gifs
-
 watch them separately: [media/gifs](media/gifs)
 
 | ![poke!!](https://github.com/miwubunz/zekko-pet/blob/main/media/gifs/poke.GIF?raw=true) | ![eep](https://github.com/miwubunz/zekko-pet/blob/main/media/gifs/eep.GIF?raw=true) | ![feed](https://github.com/miwubunz/zekko-pet/blob/main/media/gifs/feed.GIF?raw=true) |
