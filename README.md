@@ -25,7 +25,7 @@ take care of ***zekko***, your new desktop pet
    - press enter and then type ```./zekko-pet.x86_64 > /dev/null 2>&1```
 
 ## how to take care of the pet
-- feed her by **right clicking** on the window, selecting **food** and **right clicking on the food you want to give zekko**
+- feed her by **right clicking** on the window, selecting **feed** and **right clicking on the food you want to give zekko**
 - if the user does not have food, the user has to **buy food from the shop**
 - keep zekko happy by **poking her regularly**
 - when zekko is tired, **send her to sleep**
