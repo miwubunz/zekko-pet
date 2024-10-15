@@ -14,7 +14,7 @@ take care of ***zekko***, your new desktop pet
 2. clone repo:
    ```
    git clone https://github.com/miwubunz/zekko-pet
-4. import project folder to godot
+3. import project folder to godot
 
 ## run (release)
 1. windows:
@@ -33,7 +33,7 @@ take care of ***zekko***, your new desktop pet
 ## to-dos
 - improve ui
 - add more items
-- add clothes (or accesories maybe)
+- add clothes (or accessories maybe)
 - make app invisible on the taskbar
 - show different sprites when zekko's sleepy, hungry, and sad
 
