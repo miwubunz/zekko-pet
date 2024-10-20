@@ -14,7 +14,7 @@ take care of ***zekko***, your new desktop pet
 2. clone repo:
    ```
    git clone https://github.com/miwubunz/zekko-pet
-4. import project folder to godot
+3. import project folder to godot
 
 ## run (release)
 1. windows:
@@ -25,7 +25,7 @@ take care of ***zekko***, your new desktop pet
    - press enter and then type ```./zekko-pet.x86_64 > /dev/null 2>&1```
 
 ## how to take care of the pet
-- feed her by **right clicking** on the window, selecting **food** and **right clicking on the food you want to give zekko**
+- feed her by **right clicking** on the window, selecting **feed** and **right clicking on the food you want to give zekko**
 - if the user does not have food, the user has to **buy food from the shop**
 - keep zekko happy by **poking her regularly**
 - when zekko is tired, **send her to sleep**
@@ -33,12 +33,13 @@ take care of ***zekko***, your new desktop pet
 ## to-dos
 - improve ui
 - add more items
-- add clothes (or accesories maybe)
+- add clothes (or accessories maybe)
 - make app invisible on the taskbar
+- show different sprites when zekko's sleepy, hungry, and sad
 
 ## credits
 - zekko and food sprites made by [lauta](https://x.com/laudi122)
-- music, sound effects, ui, translations, writing and programming by [miwubunz](https://github.com/miwubunz) (me)
+- music, sound effects, ui, translations, writing and programming by [miwubunz](https://github.com/miwubunz)
 - rounded sprites shader by [acgc99](https://godotshaders.com/author/acgc99)
 
 ## license
@@ -48,10 +49,10 @@ this project is licensed under the MIT License, see the [LICENSE](LICENSE) file 
 
 if you find any bug or want to ask for any feature, feel free to open a issue ;p
 
-contributions are welcome ;3
+## contributions
+any contributions are fully welcome ;3
 
 ## gifs
-
 watch them separately: [media/gifs](media/gifs)
 
 | ![poke!!](https://github.com/miwubunz/zekko-pet/blob/main/media/gifs/poke.GIF?raw=true) | ![eep](https://github.com/miwubunz/zekko-pet/blob/main/media/gifs/eep.GIF?raw=true) | ![feed](https://github.com/miwubunz/zekko-pet/blob/main/media/gifs/feed.GIF?raw=true) |
