@@ -11,25 +11,22 @@ extends Control
 
 var file_data
 
+var on_shop = false
+
 var money = 9
 
 var user_path = "user://date.inf"
 var save_path_data = "user://data.inf"
 
 func _ready() -> void:
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, false)
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
+	on_shop = false
 	var screen = DisplayServer.screen_get_size()
 	var window = Vector2i(700,700)
 	menu.get_popup().id_pressed.connect(Callable(self,"thingy_id"))
 	menu_lang.get_popup().id_pressed.connect(Callable(self,"lang"))
 
-	DisplayServer.window_set_size(window)
 	loady()
 	await get_tree().process_frame
-	DisplayServer.window_set_position(Vector2(screen.x / 2 - window.x / 2, screen.y / 2 - window.y / 2))
-	get_tree().auto_accept_quit = false
 	thingy_id(int(file_data.settings.music))
 	music.play()
 	music.volume_db = linear_to_db(slider.value / 100)

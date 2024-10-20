@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c6inigjygdrks"]
+
+[ext_resource type="FontFile" uid="uid://bk7uc16cbiy0s" path="res://main/fonts/Nunito-SemiBold.ttf" id="1_kk036"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf076"]
+bg_color = Color(0.113725, 0.105882, 0.0980392, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+
+[resource]
+PopupMenu/fonts/font = ExtResource("1_kk036")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_yf076")

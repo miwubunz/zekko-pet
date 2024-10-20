@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c582vgtca0w40"]
+[gd_scene load_steps=48 format=3 uid="uid://c582vgtca0w40"]
 
 [ext_resource type="Script" path="res://main/scripts/shop.gd" id="1_rxbqu"]
 [ext_resource type="FontFile" uid="uid://bk7uc16cbiy0s" path="res://main/fonts/Nunito-SemiBold.ttf" id="1_ufa3m"]
@@ -9,8 +9,10 @@
 [ext_resource type="FontFile" uid="uid://d2rjhhxv5xkdi" path="res://main/fonts/Nunito-SemiBoldItalic.ttf" id="5_e1fsc"]
 [ext_resource type="Script" path="res://main/scripts/age.gd" id="6_7m38r"]
 [ext_resource type="Texture2D" uid="uid://cl70sgoi18xps" path="res://main/anims/blush/blush0001.png" id="7_55bed"]
+[ext_resource type="Theme" uid="uid://c6inigjygdrks" path="res://main/themes/dropdown.tres" id="10_egrjg"]
 [ext_resource type="StyleBox" uid="uid://cna8v5ygkmpme" path="res://main/styles/button2.tres" id="10_nu85t"]
 [ext_resource type="Texture2D" uid="uid://dnhbyn31hwq4r" path="res://main/sprites/food/burger.png" id="11_ie3kr"]
+[ext_resource type="Script" path="res://main/scripts/change_font.gd" id="11_y8tpw"]
 [ext_resource type="FontFile" uid="uid://kyvppm4lb7jl" path="res://main/fonts/Nunito-ExtraBold.ttf" id="12_7lko2"]
 [ext_resource type="Texture2D" uid="uid://bqaeh8t1hvje1" path="res://main/sprites/food/pizza.png" id="13_27gis"]
 [ext_resource type="Texture2D" uid="uid://c4dtf6jksckvg" path="res://main/sprites/food/fries.png" id="15_6kmjk"]
@@ -284,6 +286,7 @@ offset_left = 861.0
 offset_top = 120.0
 offset_right = 981.0
 offset_bottom = 162.0
+theme = ExtResource("10_egrjg")
 theme_override_colors/font_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_fonts/font = ExtResource("1_ufa3m")
 theme_override_font_sizes/font_size = 20
@@ -311,6 +314,7 @@ popup/item_4/id = 4
 popup/item_5/text = "shop5"
 popup/item_5/checkable = 2
 popup/item_5/id = 5
+script = ExtResource("11_y8tpw")
 
 [node name="bg" type="AudioStreamPlayer" parent="."]
 bus = &"music"
@@ -661,6 +665,7 @@ offset_left = 1.0
 offset_top = 16.0
 offset_right = 238.0
 offset_bottom = 58.0
+theme = ExtResource("10_egrjg")
 theme_override_colors/font_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_fonts/font = ExtResource("1_ufa3m")
 theme_override_font_sizes/font_size = 20

@@ -1,13 +1,16 @@
 extends Control
 
+var quitting = false
 var inventoring = false
 
 @onready var timer = $timer
 
+const FLASH = 0.5
+
 var click = false
 var move = false
 var offset = Vector2i(180,120)
-var spd = 0.2
+const SPD = 8.0
 var pos
 var pos_face
 var moved = false
@@ -34,9 +37,9 @@ var path = {
 
 var loaded = {}
 
-@onready var anims = $rin/anim
-@onready var face = $rin/face
-@onready var body = $rin/body
+@onready var anims = $zekko/anim
+@onready var face = $zekko/face
+@onready var body = $zekko/body
 
 @onready var chat = $chat
 
@@ -64,21 +67,31 @@ var selecting = false
 
 @onready var og_face = face.position
 
-var state = "idle"
-var states = ["idling", "pat", "sleeping"]
+enum states { IDLING, POKE, SLEEPING, EATING, TALKING }
+var state = states.IDLING
 
 var able = true
 var able2 = true
 
 var able_to_move = true
 
-@onready var mood = $rin
+@onready var mood = $zekko
+
+@onready var shop = $shop
+
+var on_shop = false
+
+var passthrough = true
 
 func _ready() -> void:
+	on_shop = false
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true)
 	get_viewport().transparent_bg = true
+	await get_tree().process_frame
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+	await get_tree().process_frame
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+	await get_tree().process_frame
 	
 
 	idle()
@@ -88,13 +101,14 @@ func _ready() -> void:
 			var final_path = "res://main/sprites/%s/%s" % [i, e]
 			loaded[i][e] = load(final_path)
 	loady()
-	$rin.happiness = file_data.mood.happiness
-	$rin.eatingness = file_data.mood.eatingness
-	$rin.sleepiness = file_data.mood.sleepiness
+	mood.happiness = file_data.mood.happiness
+	mood.eatingness = file_data.mood.eatingness
+	mood.sleepiness = file_data.mood.sleepiness
 	print(file_data.items.size())
 	tooltiptxt.modulate.a = 0
 	var win_size = Vector2i(350, 350)
 	DisplayServer.window_set_size(win_size)
+
 	await get_tree().process_frame
 	if file_data.settings.pos.y == null or file_data.settings.pos.x == null:
 		var screen_size = DisplayServer.screen_get_size()
@@ -105,19 +119,17 @@ func _ready() -> void:
 		save_pos()
 	else:
 		DisplayServer.window_set_position(Vector2i(file_data.settings.pos.x, file_data.settings.pos.y))
-
+	await get_tree().process_frame
+	get_window().grab_focus()
 
 func _process(delta: float) -> void:
-	print(state)
 	if Input.is_action_just_pressed("click") and body.get_rect().has_point(body.get_local_mouse_position()) and able:
 		if !selecting:
 			click = true
-			if state != "pat" and !moving and able_to_move:
+			if state != states.POKE and !moving and able_to_move:
 				timer.start()
-			if state != "pat" and able_to_pat:
+			if state != states.POKE and able_to_pat:
 				timer_poke.start()
-		else:
-			selecting = false
 	
 	if Input.is_action_just_released("click") and able:
 		if moving:
@@ -136,7 +148,7 @@ func _process(delta: float) -> void:
 		pos = Vector2(DisplayServer.mouse_get_position()) - Vector2(offset)
 
 	if pos != null and able:
-		DisplayServer.window_set_position(Vector2i(lerp(Vector2(DisplayServer.window_get_position()), pos, spd)))
+		DisplayServer.window_set_position(Vector2i(lerp(Vector2(DisplayServer.window_get_position()), pos, SPD * delta)))
 	
 	
 	var win_pos = DisplayServer.window_get_position()
@@ -152,42 +164,76 @@ func _process(delta: float) -> void:
 		pos_face = og_face
 	
 	if pos_face != null and able:
-		face.position = lerp(face.position, pos_face, spd)
+		face.position = lerp(face.position, pos_face, SPD * delta)
 	
 	if body.get_rect().has_point(body.get_local_mouse_position()) and able:
 		to_look = false
 	else:
 		to_look = true
+		
 	
-	if Input.is_action_just_pressed("click_left") and able2 and !moving:
-		popup.popup()
-		popup.position = get_global_mouse_position()
-		selecting = true
+		
+	if Input.is_action_just_pressed("click_left") and able2 and !moving and !quitting:
+		if !on_shop:
+			popup.popup()
+			popup.position = DisplayServer.mouse_get_position()
+			selecting = true
+		else:
+			if body.get_rect().has_point(body.get_local_mouse_position()):
+				var color = ColorRect.new()
+				color.size = $shop.get_child(0).size
+				color.modulate = Color(1,0,0,0.3)
+				$shop.add_child(color)
+				var tween = create_tween()
+				tween.tween_property($shop.get_child($shop.get_child_count() - 1), "modulate:a", 0, FLASH)
+				await tween.finished
+				$shop.remove_child($shop.get_child($shop.get_child_count() - 1))
 	
-	
+	if !inventoring:
+		if body.get_rect().has_point(body.get_local_mouse_position()):
+			if passthrough:
+				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
+				passthrough = false
+		else:
+			if !passthrough:
+				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, true)
+				passthrough = true
+	else:
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
+		passthrough = false
+	# this part disables popup items based on the pet state and food availability
 	if mood.eatingness == 100 or file_data.items.size() <= 0:
 		popup.set_item_disabled(1, true)
 	elif mood.eatingness != 100:
-		if state == states[2] or chat.talking or inventoring:
+		if state == states.SLEEPING or inventoring:
 			popup.set_item_disabled(1, true)
 		else:
 			popup.set_item_disabled(1, false)
 	
 	if mood.sleepiness == 0:
-		if state != states[2]:
+		if state != states.SLEEPING:
 			popup.set_item_disabled(2, true)
 		else:
 			popup.set_item_disabled(2, false)
 	elif mood.sleepiness != 0:
-		if chat.talking or inventoring or !able_to_pat or moving:
-			popup.set_item_disabled(2, true)
+		if state != states.IDLING or inventoring or !able_to_pat or moving:
+			if state == states.SLEEPING:
+				popup.set_item_disabled(2, false)
+			else:
+				popup.set_item_disabled(2, true)
 		else:
 			popup.set_item_disabled(2, false)
+	
+	if on_shop or state == states.SLEEPING or state == states.TALKING:
+		popup.set_item_disabled(3, true)
+		popup.set_item_disabled(4, true)
+	else:
+		popup.set_item_disabled(4, false)
+		popup.set_item_disabled(3, false)
 
 func idle():
 	anims.play("breathe")
-	state = states[0]
-
+	state = states.IDLING
 
 func _on_timeout() -> void:
 	if !moved:
@@ -205,14 +251,14 @@ func _on_poke_timeout() -> void:
 		mood.happiness += 10
 		if mood.happiness > 100:
 			mood.happiness = 100
-		state = states[1]
+		state = states.POKE
 		timer_poke.stop()
 		timer.stop()
 		face.play("blush")
 		anims.play("blush")
 		await get_tree().create_timer(1.5).timeout
 		popup.set_item_disabled(2,false)
-		state = states[0]
+		state = states.IDLING
 		anims.play("breathe")
 	return
 
@@ -230,11 +276,20 @@ func _on_id_pressed(id: int) -> void:
 			inv2.visible = true
 		2:
 			save_pos()
-			controller.send_data("res://main/scenes/shop.tscn", "food")
+			controller.send_data("food")
+			var scene = load("res://main/scenes/shop.tscn").instantiate()
+			shop.add_child(scene)
+			shop.popup_centered()
+			on_shop = true
 		3:
 			save_pos()
-			controller.send_data("res://main/scenes/shop.tscn", "settings")
+			controller.send_data("settings")
+			var scene = load("res://main/scenes/shop.tscn").instantiate()
+			shop.add_child(scene)
+			shop.popup_centered()
+			on_shop = true
 		4:
+			quitting = true
 			save_pos()
 			able = false
 			to_look = false
@@ -242,7 +297,7 @@ func _on_id_pressed(id: int) -> void:
 			await get_tree().create_timer(0.5).timeout
 			get_tree().quit()
 		5:
-			if state != states[2]:
+			if state != states.SLEEPING:
 				timer2.start()
 				for i in range(popup.get_item_count()):
 					popup.set_item_disabled(i,true)
@@ -252,8 +307,8 @@ func _on_id_pressed(id: int) -> void:
 				to_look = false
 				able = false
 				face.play("sleep")
-				state = states[2]
-				$rin.modulate = Color(0.5,0.5,0.5)
+				state = states.SLEEPING
+				mood.modulate = Color(0.5,0.5,0.5)
 			else:
 				timer2.stop()
 				for i in range(popup.get_item_count()):
@@ -264,8 +319,8 @@ func _on_id_pressed(id: int) -> void:
 				face.play("blush")
 				face.stop()
 				face.frame = 0
-				state = states[0]
-				$rin.modulate = Color(1,1,1)
+				state = states.IDLING
+				mood.modulate = Color(1,1,1)
 	pass
 
 func loady():
@@ -365,3 +420,7 @@ func save_pos():
 	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
 	file.store_string(JSON.stringify(file_data, "\t"))
 	file.close()
+
+
+func _on_popup_popup_hide() -> void:
+	selecting = false

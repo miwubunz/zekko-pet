@@ -11,7 +11,6 @@ var late = false
 @onready var control = $".."
 
 func _process(delta: float) -> void:
-	print(sleepiness)
 	time = Time.get_time_string_from_system().split(":")
 	if int(time[0]) < 24 and int(time[0]) < 08:
 		late = true
@@ -21,23 +20,30 @@ func _process(delta: float) -> void:
 
 
 func decrease_mood() -> void:
-	if control.state != control.states[2]:
-		if happiness != 0:
+	if control.state != control.states.SLEEPING:
+		if happiness > 0:
 			happiness -= 1
-		if eatingness != 0:
+		happiness = max(happiness, 0)
+		
+		if eatingness > 0:
 			eatingness -= 3
-		if sleepiness != 100:
+		eatingness = max(eatingness, 0)
+		
+		if sleepiness < 100:
 			if late:
 				sleepiness += 15
 			else:
 				sleepiness += 5
+		sleepiness = min(sleepiness, 100)
+		
 		control.update_mood(happiness, eatingness, sleepiness)
 	else:
 		pass
 
 
 func _on_sleeping_timeout() -> void:
-	if sleepiness != 0:
+	if sleepiness > 0:
 		sleepiness -= 1
-		control.update_mood(happiness, eatingness, sleepiness)
+	
+	control.update_mood(happiness, eatingness, sleepiness)
 	pass

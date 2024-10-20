@@ -27,6 +27,8 @@ controller="*res://main/scenes/controller.tscn"
 window/size/viewport_width=1052
 window/size/viewport_height=1052
 window/size/resizable=false
+window/size/no_focus=true
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/per_pixel_transparency/allowed=true
 

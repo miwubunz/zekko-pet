@@ -577,7 +577,7 @@ corner_radius_bottom_left = 20
 shadow_offset = Vector2(-3, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohvey"]
-content_margin_left = 20.0
+content_margin_left = 15.0
 bg_color = Color(0, 0, 0, 0.443137)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
@@ -586,10 +586,10 @@ corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6k01"]
 bg_color = Color(0.0846899, 0.0846899, 0.0846899, 0.247059)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 expand_margin_left = 20.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd4vg"]
@@ -615,7 +615,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_20f5v")
 
-[node name="rin" type="Control" parent="."]
+[node name="zekko" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 535.0
 offset_top = 710.0
@@ -623,7 +624,7 @@ offset_right = 1235.0
 offset_bottom = 1410.0
 script = ExtResource("2_664ke")
 
-[node name="shadow" type="Panel" parent="rin"]
+[node name="shadow" type="Panel" parent="zekko"]
 visible = false
 layout_mode = 0
 offset_left = 148.0
@@ -632,24 +633,25 @@ offset_right = 568.0
 offset_bottom = 631.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pkd3r")
 
-[node name="body" type="Sprite2D" parent="rin"]
+[node name="body" type="Sprite2D" parent="zekko"]
 position = Vector2(346, 585)
 scale = Vector2(1.6978, 1.6978)
 texture = ExtResource("2_8joj5")
 offset = Vector2(2.35599, -138.414)
 
-[node name="face" type="AnimatedSprite2D" parent="rin"]
+[node name="face" type="AnimatedSprite2D" parent="zekko"]
 position = Vector2(350, 350)
 scale = Vector2(1.54902, 1.54902)
 sprite_frames = SubResource("SpriteFrames_kuicb")
 animation = &"idle"
 
-[node name="anim" type="AnimationPlayer" parent="rin"]
+[node name="anim" type="AnimationPlayer" parent="zekko"]
 libraries = {
 "": SubResource("AnimationLibrary_g3pf1")
 }
 
 [node name="chat" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_left = 857.0
 offset_top = 555.0
@@ -689,10 +691,10 @@ wait_time = 0.078
 
 [node name="popup" type="PopupMenu" parent="."]
 transparent_bg = true
-size = Vector2i(244, 438)
+size = Vector2i(120, 198)
 transparent = true
 theme_override_fonts/font = ExtResource("93_2x82n")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_ohvey")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i6k01")
 hide_on_state_item_selection = true
@@ -735,6 +737,7 @@ autostart = true
 
 [node name="inv" type="Control" parent="."]
 visible = false
+layout_mode = 3
 anchors_preset = 0
 offset_left = 448.0
 offset_top = 655.0
@@ -795,11 +798,20 @@ autostart = true
 
 [node name="sleeping" type="Timer" parent="."]
 
+[node name="shop" type="Window" parent="."]
+title = "shop"
+size = Vector2i(700, 700)
+visible = false
+content_scale_size = Vector2i(1052, 1052)
+content_scale_mode = 1
+content_scale_aspect = 1
+
 [connection signal="timeout" from="timer" to="." method="_on_timeout"]
 [connection signal="timeout" from="timer_poke" to="." method="_on_poke_timeout"]
 [connection signal="id_pressed" from="popup" to="." method="_on_id_pressed"]
-[connection signal="timeout" from="decrease_mood" to="rin" method="decrease_mood"]
+[connection signal="popup_hide" from="popup" to="." method="_on_popup_popup_hide"]
+[connection signal="timeout" from="decrease_mood" to="zekko" method="decrease_mood"]
 [connection signal="pressed" from="inv/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="money_giver" to="." method="_on_money_giver_timeout"]
 [connection signal="timeout" from="random_chat" to="chat" method="mood_controller"]
-[connection signal="timeout" from="sleeping" to="rin" method="_on_sleeping_timeout"]
+[connection signal="timeout" from="sleeping" to="zekko" method="_on_sleeping_timeout"]

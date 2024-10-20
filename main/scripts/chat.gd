@@ -7,7 +7,7 @@ var month
 var week
 var day
 
-@onready var mood = $"../rin"
+@onready var mood = $"../zekko"
 
 @onready var talksfx = $"../sounds/talk"
 @onready var open = $"../sounds/appear"
@@ -36,9 +36,7 @@ var able = false
 
 var timetween = 0.7
 
-var l = false # variable so that a tween doesnt keep tweening every frame 
-
-var talking = false
+var l = false # variable so that a tween doesnt keep tweening every frame
 
 func _ready() -> void:
 	TranslationServer.set_locale("en")
@@ -72,32 +70,33 @@ func _process(delta: float) -> void:
 					"?":
 						timer = 0.5
 			else:
-				timer = 1 # delay before setting the next sentence
+				timer = 1
 				finished = true
 		if timer < 0 and finished and !l:
+			unshow()
 			able = true
 			l = true
 	
-	if Input.is_action_just_pressed("enter") and able and finished and g:
-		talking = false
-		popup.set_item_disabled(2,false)
-		popup.set_item_disabled(0,false)
-		close.play()
-		l = false
-		able = false
-		timer = null
-		txt.visible_characters = 0
-		index = 0
-		sentence = ""
-		txt.text = sentence
-		close_anim()
-		g = false
-	elif Input.is_action_just_pressed("enter") and !finished and g:
-		timer = null
-		finished = true
-		txt.visible_characters = txt.text.length()
-		index = txt.text.length()
-		able = true
+	#if Input.is_action_just_pressed("enter") and able and finished and g:
+		#control.state = control.states.IDLING
+		#popup.set_item_disabled(2,false)
+		#popup.set_item_disabled(0,false)
+		#close.play()
+		#l = false
+		#able = false
+		#timer = null
+		#txt.visible_characters = 0
+		#index = 0
+		#sentence = ""
+		#txt.text = sentence
+		#close_anim()
+		#g = false
+	#elif Input.is_action_just_pressed("enter") and !finished and g:
+		#timer = null
+		#finished = true
+		#txt.visible_characters = txt.text.length()
+		#index = txt.text.length()
+		#able = true
 
 func talksound():
 	var e = randf_range(0.9,1.1)
@@ -105,7 +104,7 @@ func talksound():
 	talksfx.play()
 
 func say_rndm():
-	talking = true
+	control.state = control.states.TALKING
 	popup.set_item_disabled(0, true)
 	open.play()
 	txt.visible_characters = 0
@@ -181,7 +180,7 @@ func mood_controller():
 			return
 		txt.text = sentence
 		
-		talking = true
+		control.state = control.states.TALKING
 		popup.set_item_disabled(0, true)
 		open.play()
 		txt.visible_characters = 0
@@ -217,6 +216,23 @@ func age():
 		print("weeks " + str(week))
 		print("days " + str(day))
 		
+
+func unshow():
+	await get_tree().create_timer(2).timeout
+	if able and finished and g:
+		control.state = control.states.IDLING
+		popup.set_item_disabled(2,false)
+		popup.set_item_disabled(0,false)
+		close.play()
+		l = false
+		able = false
+		timer = null
+		txt.visible_characters = 0
+		index = 0
+		sentence = ""
+		txt.text = sentence
+		close_anim()
+		g = false
 
 #region animations
 func open_anim():
