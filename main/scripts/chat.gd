@@ -27,7 +27,7 @@ var sentence = ""
 
 var sentencearray = 0
 
-@onready var popup = $"../popup"
+@onready var popup = $"../canvaslayer/popup"
 @onready var control = $".."
 
 var reset = 0.02 # timer value
@@ -147,7 +147,7 @@ func sntc(bef, all, happy):
 	print(sentence)
 
 func mood_controller():
-	if !g and control.state != control.states[2]:
+	if !g and control.state != control.states.SLEEPING:
 		popup.set_item_disabled(2,true)
 
 		var moods = []

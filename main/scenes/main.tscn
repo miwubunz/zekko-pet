@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://ds0eoaak0ijtw"]
+[gd_scene load_steps=109 format=3 uid="uid://ds0eoaak0ijtw"]
 
 [ext_resource type="Script" path="res://main/scripts/main.gd" id="1_20f5v"]
 [ext_resource type="Texture2D" uid="uid://dkfmwjwcqf7yg" path="res://main/sprites/rin_body.png" id="2_8joj5"]
@@ -576,6 +576,31 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 shadow_offset = Vector2(-3, 3)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd4vg"]
+bg_color = Color(0.113725, 0.105882, 0.0980392, 0.380392)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxv7w"]
+font = ExtResource("96_ecmts")
+font_size = 70
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3llm2"]
+bg_color = Color(0.0923971, 0.0923971, 0.092397, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qwyx"]
+bg_color = Color(1, 0.54648, 0.713276, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohvey"]
 content_margin_left = 15.0
 bg_color = Color(0, 0, 0, 0.443137)
@@ -591,17 +616,6 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 expand_margin_left = 20.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd4vg"]
-bg_color = Color(0.113725, 0.105882, 0.0980392, 0.380392)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-
-[sub_resource type="LabelSettings" id="LabelSettings_pxv7w"]
-font = ExtResource("96_ecmts")
-font_size = 70
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -688,28 +702,6 @@ wait_time = 0.579
 
 [node name="timer_poke" type="Timer" parent="."]
 wait_time = 0.078
-
-[node name="popup" type="PopupMenu" parent="."]
-transparent_bg = true
-size = Vector2i(120, 198)
-transparent = true
-theme_override_fonts/font = ExtResource("93_2x82n")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/panel = SubResource("StyleBoxFlat_ohvey")
-theme_override_styles/hover = SubResource("StyleBoxFlat_i6k01")
-hide_on_state_item_selection = true
-item_count = 6
-item_0/text = "OPT_1"
-item_1/text = "OPT_2"
-item_1/id = 1
-item_2/text = "SLEEP"
-item_2/id = 5
-item_3/text = "OPT_3"
-item_3/id = 2
-item_4/text = "OPT_4"
-item_4/id = 3
-item_5/text = "OPT_5"
-item_5/id = 4
 
 [node name="sounds" type="Control" parent="."]
 layout_mode = 3
@@ -806,12 +798,52 @@ content_scale_size = Vector2i(1052, 1052)
 content_scale_mode = 1
 content_scale_aspect = 1
 
+[node name="move_bar" type="ProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.227451)
+layout_mode = 0
+offset_left = 721.0
+offset_top = 1019.0
+offset_right = 1064.0
+offset_bottom = 1115.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3llm2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3qwyx")
+show_percentage = false
+
+[node name="canvaslayer" type="CanvasLayer" parent="."]
+
+[node name="popup" type="PopupMenu" parent="canvaslayer"]
+process_priority = 3
+transparent_bg = true
+size = Vector2i(120, 198)
+always_on_top = true
+transparent = true
+theme_override_fonts/font = ExtResource("93_2x82n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/panel = SubResource("StyleBoxFlat_ohvey")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6k01")
+hide_on_state_item_selection = true
+item_count = 6
+item_0/text = "OPT_1"
+item_1/text = "OPT_2"
+item_1/id = 1
+item_2/text = "SLEEP"
+item_2/id = 5
+item_3/text = "OPT_3"
+item_3/id = 2
+item_4/text = "OPT_4"
+item_4/id = 3
+item_5/text = "OPT_5"
+item_5/id = 4
+
+[node name="area" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1404, 1404)
+
 [connection signal="timeout" from="timer" to="." method="_on_timeout"]
 [connection signal="timeout" from="timer_poke" to="." method="_on_poke_timeout"]
-[connection signal="id_pressed" from="popup" to="." method="_on_id_pressed"]
-[connection signal="popup_hide" from="popup" to="." method="_on_popup_popup_hide"]
 [connection signal="timeout" from="decrease_mood" to="zekko" method="decrease_mood"]
 [connection signal="pressed" from="inv/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="money_giver" to="." method="_on_money_giver_timeout"]
 [connection signal="timeout" from="random_chat" to="chat" method="mood_controller"]
 [connection signal="timeout" from="sleeping" to="zekko" method="_on_sleeping_timeout"]
+[connection signal="id_pressed" from="canvaslayer/popup" to="." method="_on_id_pressed"]
+[connection signal="popup_hide" from="canvaslayer/popup" to="." method="_on_popup_popup_hide"]

@@ -43,7 +43,7 @@ var loaded = {}
 
 @onready var chat = $chat
 
-@onready var popup = $popup
+@onready var popup = $canvaslayer/popup
 
 var checking = false
 
@@ -122,7 +122,16 @@ func _ready() -> void:
 	await get_tree().process_frame
 	get_window().grab_focus()
 
+
 func _process(delta: float) -> void:
+	var percentage = 100 - ((timer.time_left / timer.wait_time) * 100) if timer.time_left > 0 else 0
+	$move_bar.value = percentage
+	
+	if percentage > 50:
+		$move_bar.visible = true
+	else:
+		$move_bar.visible = false
+	
 	if Input.is_action_just_pressed("click") and body.get_rect().has_point(body.get_local_mouse_position()) and able:
 		if !selecting:
 			click = true
@@ -130,6 +139,13 @@ func _process(delta: float) -> void:
 				timer.start()
 			if state != states.POKE and able_to_pat:
 				timer_poke.start()
+	
+	if timer.time_left > 0:
+		if body.get_rect().has_point(body.get_local_mouse_position()):
+			pass
+		else:
+			print("stoopid")
+			timer.stop()
 	
 	if Input.is_action_just_released("click") and able:
 		if moving:
@@ -192,19 +208,28 @@ func _process(delta: float) -> void:
 	if !inventoring:
 		if body.get_rect().has_point(body.get_local_mouse_position()):
 			if passthrough:
+				var region = $area.polygon
+				DisplayServer.window_set_mouse_passthrough(PackedVector2Array())
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
+				
 				passthrough = false
+				print("hovering on pet")
 		else:
 			if !passthrough:
+				var region = $area.polygon
+				DisplayServer.window_set_mouse_passthrough(region)
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, true)
 				passthrough = true
+				print("hovering somewhere outside the pet")
 	else:
+		var region = $area.polygon
+		DisplayServer.window_set_mouse_passthrough(PackedVector2Array())
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
 		passthrough = false
 	# this part disables popup items based on the pet state and food availability
 	if mood.eatingness == 100 or file_data.items.size() <= 0:
 		popup.set_item_disabled(1, true)
-	elif mood.eatingness != 100:
+	elif mood.eatingness < 100:
 		if state == states.SLEEPING or inventoring:
 			popup.set_item_disabled(1, true)
 		else:
