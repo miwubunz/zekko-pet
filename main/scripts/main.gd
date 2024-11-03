@@ -140,13 +140,6 @@ func _process(delta: float) -> void:
 			if state != states.POKE and able_to_pat:
 				timer_poke.start()
 	
-	if timer.time_left > 0:
-		if body.get_rect().has_point(body.get_local_mouse_position()):
-			pass
-		else:
-			print("stoopid")
-			timer.stop()
-	
 	if Input.is_action_just_released("click") and able:
 		if moving:
 			move = false
