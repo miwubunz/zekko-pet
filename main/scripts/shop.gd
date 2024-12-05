@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		self.get_parent().get_parent().save_pos()
 		get_tree().change_scene_to_file("res://main/scenes/main.tscn")
 
 func thingy_id(id):

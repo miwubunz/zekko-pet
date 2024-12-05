@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://ds0eoaak0ijtw"]
+[gd_scene load_steps=113 format=3 uid="uid://ds0eoaak0ijtw"]
 
 [ext_resource type="Script" path="res://main/scripts/main.gd" id="1_20f5v"]
 [ext_resource type="Texture2D" uid="uid://dkfmwjwcqf7yg" path="res://main/sprites/rin_body.png" id="2_8joj5"]
@@ -87,6 +87,8 @@
 [ext_resource type="Texture2D" uid="uid://dtinthy2ta88r" path="res://main/anims/mouth_open/mouth0030.png" id="62_ojgpi"]
 [ext_resource type="Texture2D" uid="uid://tmktjjt7uxvo" path="res://main/sprites/zzz.png" id="85_n7dpp"]
 [ext_resource type="Script" path="res://main/scripts/chat.gd" id="88_ahfkh"]
+[ext_resource type="FontFile" uid="uid://d2rjhhxv5xkdi" path="res://main/fonts/Nunito-SemiBoldItalic.ttf" id="89_bd0od"]
+[ext_resource type="FontFile" uid="uid://kyvppm4lb7jl" path="res://main/fonts/Nunito-ExtraBold.ttf" id="90_7imnl"]
 [ext_resource type="AudioStream" uid="uid://cjk765em0hj4n" path="res://main/sounds/untijjtled.wav" id="90_we2ok"]
 [ext_resource type="AudioStream" uid="uid://barar30xh6ymv" path="res://main/sounds/open.wav" id="91_o0pqe"]
 [ext_resource type="AudioStream" uid="uid://57nbqnry0rwg" path="res://main/sounds/close.wav" id="92_5s2ix"]
@@ -583,6 +585,15 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4va0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5q7k"]
+bg_color = Color(0, 0, 0, 0.407843)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="LabelSettings" id="LabelSettings_pxv7w"]
 font = ExtResource("96_ecmts")
 font_size = 70
@@ -687,6 +698,8 @@ offset_top = -80.0
 offset_right = 404.0
 offset_bottom = 15.0
 theme_override_fonts/normal_font = ExtResource("93_2x82n")
+theme_override_fonts/italics_font = ExtResource("89_bd0od")
+theme_override_fonts/bold_font = ExtResource("90_7imnl")
 theme_override_font_sizes/bold_italics_font_size = 50
 theme_override_font_sizes/italics_font_size = 50
 theme_override_font_sizes/normal_font_size = 50
@@ -764,6 +777,7 @@ offset_right = 931.0
 offset_bottom = 43.0
 theme_override_fonts/font = ExtResource("93_2x82n")
 theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e4va0")
 text = "X"
 flat = true
 
@@ -772,6 +786,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.1, 1.1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_l5q7k")
 
 [node name="Label" type="Label" parent="inv"]
 layout_mode = 0

@@ -204,6 +204,7 @@ func _process(delta: float) -> void:
 				var region = $area.polygon
 				DisplayServer.window_set_mouse_passthrough(PackedVector2Array())
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
+				get_viewport().get_window().mouse_passthrough = false
 				
 				passthrough = false
 				print("hovering on pet")
@@ -212,12 +213,12 @@ func _process(delta: float) -> void:
 				var region = $area.polygon
 				DisplayServer.window_set_mouse_passthrough(region)
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, true)
+				get_viewport().get_window().mouse_passthrough = true
 				passthrough = true
 				print("hovering somewhere outside the pet")
 	else:
-		var region = $area.polygon
-		DisplayServer.window_set_mouse_passthrough(PackedVector2Array())
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
+		get_viewport().get_window().mouse_passthrough = false
 		passthrough = false
 	# this part disables popup items based on the pet state and food availability
 	if mood.eatingness == 100 or file_data.items.size() <= 0:
@@ -359,7 +360,7 @@ func loady():
 			print(i.item)
 			print(i.type)
 			add_item(loaded[i.type][i.item + ".png"], tr(i.item.capitalize()), i.id)
-
+	
 func add_item(item, namey, id):
 	var l = TextureRect.new()
 	l.texture = item
@@ -371,21 +372,23 @@ func add_item(item, namey, id):
 	inv.add_child(l)
 
 func _on_money_giver_timeout() -> void:
-	var money = int(file_data.settings.money)
-	print(money)
-	file_data.settings.money = money + 2
-	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
-	file.store_string(JSON.stringify(file_data, "\t"))
-	file.close()
-	pass
+	if not on_shop:
+		var money = int(file_data.settings.money)
+		print(money)
+		file_data.settings.money = money + 2
+		var file = FileAccess.open(save_path_data, FileAccess.WRITE)
+		file.store_string(JSON.stringify(file_data, "\t"))
+		file.close()
+		pass
 
 func update_mood(happiness, eatingness, sleepiness):
-	file_data.mood.happiness = happiness
-	file_data.mood.eatingness = eatingness
-	file_data.mood.sleepiness = sleepiness
-	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
-	file.store_string(JSON.stringify(file_data, "\t"))
-	file.close()
+	if not on_shop:
+		file_data.mood.happiness = happiness
+		file_data.mood.eatingness = eatingness
+		file_data.mood.sleepiness = sleepiness
+		var file = FileAccess.open(save_path_data, FileAccess.WRITE)
+		file.store_string(JSON.stringify(file_data, "\t"))
+		file.close()
 
 func delete_item(id):
 	inventoring = false

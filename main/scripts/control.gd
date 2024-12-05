@@ -76,20 +76,13 @@ func _process(delta: float) -> void:
 			openthing()
 			able = true
 			l = true
+			await get_tree().create_timer(1.5).timeout
+			if sentencearray != sentences.size() - 1 and finished and g:
+				closer()
+			elif sentencearray >= sentences.size() - 1 and finished and g:
+				close_more()
 	
-	if Input.is_action_just_pressed("enter") and able and sentencearray != sentences.size() - 1 and finished and g:
-		close.play()
-		l = false
-		able = false
-		closething()
-		timer = reset
-		sentencearray += 1
-		txt.visible_characters = 0
-		index = 0
-		finished = false
-		toanim += 1
-		sentence = sentences[sentencearray]
-		txt.text = sentence
+
 	elif Input.is_action_just_pressed("enter") and !finished and g:
 		open.play()
 		timer = null
@@ -98,12 +91,6 @@ func _process(delta: float) -> void:
 		index = txt.text.length()
 		able = true
 		openthing()
-	elif Input.is_action_just_pressed("enter") and able and sentencearray >= sentences.size() - 1 and finished and g:
-		close.play()
-		create_tween().tween_property(txt, "modulate:a", 0, timetween)
-		able = false
-		closething()
-		bye()
 
 func talksound():
 	var e = randf_range(0.9,1.1)
@@ -151,6 +138,27 @@ func bye():
 	await get_tree().create_timer(1).timeout
 	anims.play("k")
 	controluwu.visible = true
+
+func closer():
+	close.play()
+	l = false
+	able = false
+	closething()
+	timer = reset
+	sentencearray += 1
+	txt.visible_characters = 0
+	index = 0
+	finished = false
+	toanim += 1
+	sentence = sentences[sentencearray]
+	txt.text = sentence
+
+func close_more():
+	close.play()
+	create_tween().tween_property(txt, "modulate:a", 0, timetween)
+	able = false
+	closething()
+	bye()
 
 #region animations
 func openthing():
