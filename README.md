@@ -20,9 +20,8 @@ take care of ***zekko***, your new desktop pet
 1. windows:
    - download **zekko-pet.exe** and open it
 2. linux:
-   - download **zekko-pet.x86_64** and open the terminal
-   - in the terminal, type ```cd``` and the path of the folder containing **zekko-pet.x86_64**
-   - press enter and then type ```./zekko-pet.x86_64 > /dev/null 2>&1```
+   - download **zekko-pet.tar.gz** and extract it (via file manager, or terminal with ```tar -xvzf zekko-pet.tar.gz```
+   - open zekko-pet.x86_64 (via file manager, or terminal with ```./zekko-pet.x86_64 > /dev/null 2>&1```)
 
 ## how to take care of the pet
 - feed her by **right clicking** on the window, selecting **feed** and **right clicking on the food you want to give zekko**
