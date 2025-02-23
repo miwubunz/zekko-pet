@@ -46,7 +46,7 @@ this project is licensed under the MIT License, see the [LICENSE](LICENSE) file 
 
 <hr>
 
-if you find any bug or want to ask for any feature, feel free to open a issue ;p
+if you find a bug or want to ask for a feature, feel free to open an issue ;p
 
 ## contributions
 any contributions are fully welcome ;3
