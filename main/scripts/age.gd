@@ -1,6 +1,5 @@
 extends RichTextLabel
 
-var data_path = "user://date.inf"
 var year
 var month
 var week
@@ -8,32 +7,23 @@ var day
 
 func _ready() -> void:
 	age()
-	pass
 
 func age():
-	if FileAccess.file_exists(data_path):
-		print("file found :D")
-		var file = FileAccess.open(data_path, FileAccess.READ)
-		var date = file.get_file_as_string(data_path)
-		var result = date.split("-")
-		var result2 = Time.get_date_string_from_system().split("-")
-		
-		year = int(result2[0]) - int(result[0])
-		month = year * 12 + int(result2[1]) - int(result[1])
-		day = year * 365 + month * 30 + int(result2[2]) - int(result[2])
-		week = day / 7
-		
-		year = abs(year)
-		month = abs(month)
-		day = abs(day)
-		week = abs(week)
-		
-		print("years " + str(year))
-		print("months " + str(month))
-		print("weeks " + str(week))
-		print("days " + str(day))
-		
-		text = "[i]" + tr("AGE") + retrieve_str()
+	var date = DataManager.data.user.creation_date
+	var result = date.split("-")
+	var result2 = Time.get_date_string_from_system().split("-")
+	
+	year = int(result2[0]) - int(result[0])
+	month = year * 12 + int(result2[1]) - int(result[1])
+	day = year * 365 + month * 30 + int(result2[2]) - int(result[2])
+	week = day / 7
+	
+	year = abs(year)
+	month = abs(month)
+	day = abs(day)
+	week = abs(week)
+	
+	text = "[i]" + tr("AGE") + retrieve_str()
 
 func retrieve_str():
 	if year > 0:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=113 format=3 uid="uid://ds0eoaak0ijtw"]
 
-[ext_resource type="Script" path="res://main/scripts/main.gd" id="1_20f5v"]
+[ext_resource type="Script" uid="uid://cm6dnm1wwdp78" path="res://main/scripts/main.gd" id="1_20f5v"]
 [ext_resource type="Texture2D" uid="uid://dkfmwjwcqf7yg" path="res://main/sprites/rin_body.png" id="2_8joj5"]
-[ext_resource type="Script" path="res://main/scripts/mood.gd" id="2_664ke"]
+[ext_resource type="Script" uid="uid://dfsrd0t7cwjhr" path="res://main/scripts/mood.gd" id="2_664ke"]
 [ext_resource type="Texture2D" uid="uid://cos3icatxkyd1" path="res://main/anims/blush/blush0003.png" id="5_mp2f1"]
 [ext_resource type="Texture2D" uid="uid://bfutqegglwxmg" path="res://main/anims/eat/eat0005.png" id="7_d0rho"]
 [ext_resource type="Texture2D" uid="uid://ceg2pf34c7ply" path="res://main/anims/eat/eat0006.png" id="8_cb5bm"]
@@ -86,7 +86,7 @@
 [ext_resource type="Texture2D" uid="uid://b65mvql1ppksu" path="res://main/anims/mouth_open/mouth0029.png" id="61_e1lm3"]
 [ext_resource type="Texture2D" uid="uid://dtinthy2ta88r" path="res://main/anims/mouth_open/mouth0030.png" id="62_ojgpi"]
 [ext_resource type="Texture2D" uid="uid://tmktjjt7uxvo" path="res://main/sprites/zzz.png" id="85_n7dpp"]
-[ext_resource type="Script" path="res://main/scripts/chat.gd" id="88_ahfkh"]
+[ext_resource type="Script" uid="uid://cmnjnd0s6xuat" path="res://main/scripts/chat.gd" id="88_ahfkh"]
 [ext_resource type="FontFile" uid="uid://d2rjhhxv5xkdi" path="res://main/fonts/Nunito-SemiBoldItalic.ttf" id="89_bd0od"]
 [ext_resource type="FontFile" uid="uid://kyvppm4lb7jl" path="res://main/fonts/Nunito-ExtraBold.ttf" id="90_7imnl"]
 [ext_resource type="AudioStream" uid="uid://cjk765em0hj4n" path="res://main/sounds/untijjtled.wav" id="90_we2ok"]
@@ -562,12 +562,12 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g3pf1"]
 _data = {
-"RESET": SubResource("Animation_rw6sh"),
-"blob": SubResource("Animation_skjqc"),
-"blush": SubResource("Animation_tsiuq"),
-"breathe": SubResource("Animation_rv1f7"),
-"move": SubResource("Animation_rqra4"),
-"move_end": SubResource("Animation_6lhud")
+&"RESET": SubResource("Animation_rw6sh"),
+&"blob": SubResource("Animation_skjqc"),
+&"blush": SubResource("Animation_tsiuq"),
+&"breathe": SubResource("Animation_rv1f7"),
+&"move": SubResource("Animation_rqra4"),
+&"move_end": SubResource("Animation_6lhud")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8nj0"]
@@ -672,7 +672,7 @@ animation = &"idle"
 
 [node name="anim" type="AnimationPlayer" parent="zekko"]
 libraries = {
-"": SubResource("AnimationLibrary_g3pf1")
+&"": SubResource("AnimationLibrary_g3pf1")
 }
 
 [node name="chat" type="Control" parent="."]
@@ -828,10 +828,7 @@ show_percentage = false
 
 [node name="popup" type="PopupMenu" parent="canvaslayer"]
 process_priority = 3
-transparent_bg = true
 size = Vector2i(120, 198)
-always_on_top = true
-transparent = true
 theme_override_fonts/font = ExtResource("93_2x82n")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxFlat_ohvey")
@@ -839,6 +836,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_i6k01")
 hide_on_state_item_selection = true
 item_count = 6
 item_0/text = "OPT_1"
+item_0/id = 0
 item_1/text = "OPT_2"
 item_1/id = 1
 item_2/text = "SLEEP"

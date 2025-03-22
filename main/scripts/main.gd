@@ -12,7 +12,9 @@ var move = false
 var offset = Vector2i(180,120)
 const SPD = 8.0
 var pos
-var pos_face
+var pos_face : Vector2
+var look_offset : Vector2
+var max_offset = 30
 var moved = false
 
 var wanna_talk = true
@@ -40,6 +42,7 @@ var loaded = {}
 @onready var anims = $zekko/anim
 @onready var face = $zekko/face
 @onready var body = $zekko/body
+@onready var zekko = $zekko
 
 @onready var chat = $chat
 
@@ -54,14 +57,10 @@ var save_path_data = "user://data.inf"
 var mouse_pos
 @onready var timer_poke = $timer_poke
 
-var look_offset
 var to_look = true
 var able_to_pat = true
 
-var max_offset = 30
 var moving = false
-
-var file_data
 
 var selecting = false
 
@@ -83,6 +82,7 @@ var on_shop = false
 
 var passthrough = true
 
+
 func _ready() -> void:
 	on_shop = false
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true)
@@ -92,7 +92,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
 	await get_tree().process_frame
-	
 
 	idle()
 	for i in path.keys():
@@ -101,16 +100,15 @@ func _ready() -> void:
 			var final_path = "res://main/sprites/%s/%s" % [i, e]
 			loaded[i][e] = load(final_path)
 	loady()
-	mood.happiness = file_data.mood.happiness
-	mood.eatingness = file_data.mood.eatingness
-	mood.sleepiness = file_data.mood.sleepiness
-	print(file_data.items.size())
+	mood.happiness = DataManager.data.mood.happiness
+	mood.eatingness = DataManager.data.mood.eatingness
+	mood.sleepiness = DataManager.data.mood.sleepiness
 	tooltiptxt.modulate.a = 0
 	var win_size = Vector2i(350, 350)
 	DisplayServer.window_set_size(win_size)
 
 	await get_tree().process_frame
-	if file_data.settings.pos.y == null or file_data.settings.pos.x == null:
+	if DataManager.data.settings.last_position.y == null or DataManager.data.settings.last_position.x == null:
 		var screen_size = DisplayServer.screen_get_size()
 		var window_position = screen_size - win_size
 		
@@ -118,7 +116,7 @@ func _ready() -> void:
 		await get_tree().process_frame
 		save_pos()
 	else:
-		DisplayServer.window_set_position(Vector2i(file_data.settings.pos.x, file_data.settings.pos.y))
+		DisplayServer.window_set_position(Vector2i(DataManager.data.settings.last_position.x, DataManager.data.settings.last_position.y))
 	await get_tree().process_frame
 	get_window().grab_focus()
 
@@ -126,12 +124,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var percentage = 100 - ((timer.time_left / timer.wait_time) * 100) if timer.time_left > 0 else 0
 	$move_bar.value = percentage
-	
+
 	if percentage > 50:
 		$move_bar.visible = true
 	else:
 		$move_bar.visible = false
-	
+
 	if Input.is_action_just_pressed("click") and body.get_rect().has_point(body.get_local_mouse_position()) and able:
 		if !selecting:
 			click = true
@@ -139,7 +137,7 @@ func _process(delta: float) -> void:
 				timer.start()
 			if state != states.POKE and able_to_pat:
 				timer_poke.start()
-	
+
 	if Input.is_action_just_released("click") and able:
 		if moving:
 			move = false
@@ -151,37 +149,36 @@ func _process(delta: float) -> void:
 			able_to_pat = true
 		click = false
 		timer.stop()
-	
-	
+
 	if move and able:
 		pos = Vector2(DisplayServer.mouse_get_position()) - Vector2(offset)
 
 	if pos != null and able:
 		DisplayServer.window_set_position(Vector2i(lerp(Vector2(DisplayServer.window_get_position()), pos, SPD * delta)))
 	
+	var mouse_glob := get_global_mouse_position()
+	var mouse_loc = zekko.get_global_transform().affine_inverse() * mouse_glob
+
+	var to_mouse = mouse_loc - og_face
+	var dist = to_mouse.length()
+	var dir = to_mouse.normalized() if dist > 0.01 else Vector2.ZERO
 	
-	var win_pos = DisplayServer.window_get_position()
-	
-	var mouse = DisplayServer.mouse_get_position()
-	var dirc = (Vector2(mouse) - (og_face + Vector2(win_pos) + global_position)).normalized()
-	
-	look_offset = dirc * max_offset
-	
+	look_offset = dir * min(dist, max_offset)
+
 	if to_look and !selecting and able:
 		pos_face = og_face + look_offset
 	else:
 		pos_face = og_face
 	
-	if pos_face != null and able:
+	if able:
 		face.position = lerp(face.position, pos_face, SPD * delta)
-	
+
+
 	if body.get_rect().has_point(body.get_local_mouse_position()) and able:
 		to_look = false
 	else:
 		to_look = true
-		
-	
-		
+
 	if Input.is_action_just_pressed("click_left") and able2 and !moving and !quitting:
 		if !on_shop:
 			popup.popup()
@@ -201,13 +198,11 @@ func _process(delta: float) -> void:
 	if !inventoring:
 		if body.get_rect().has_point(body.get_local_mouse_position()):
 			if passthrough:
-				var region = $area.polygon
 				DisplayServer.window_set_mouse_passthrough(PackedVector2Array())
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
 				get_viewport().get_window().mouse_passthrough = false
 				
 				passthrough = false
-				print("hovering on pet")
 		else:
 			if !passthrough:
 				var region = $area.polygon
@@ -215,13 +210,12 @@ func _process(delta: float) -> void:
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, true)
 				get_viewport().get_window().mouse_passthrough = true
 				passthrough = true
-				print("hovering somewhere outside the pet")
 	else:
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, false)
 		get_viewport().get_window().mouse_passthrough = false
 		passthrough = false
 	# this part disables popup items based on the pet state and food availability
-	if mood.eatingness == 100 or file_data.items.size() <= 0:
+	if mood.eatingness == 100 or DataManager.data.items.size() <= 0:
 		popup.set_item_disabled(1, true)
 	elif mood.eatingness < 100:
 		if state == states.SLEEPING or inventoring:
@@ -250,9 +244,11 @@ func _process(delta: float) -> void:
 		popup.set_item_disabled(4, false)
 		popup.set_item_disabled(3, false)
 
+
 func idle():
 	anims.play("breathe")
 	state = states.IDLING
+
 
 func _on_timeout() -> void:
 	if !moved:
@@ -340,27 +336,20 @@ func _on_id_pressed(id: int) -> void:
 				face.frame = 0
 				state = states.IDLING
 				mood.modulate = Color(1,1,1)
-	pass
+
 
 func loady():
-	var file = FileAccess.open(save_path_data, FileAccess.READ)
-	if not FileAccess.file_exists(save_path_data):
-		print("NODATA")
-	var data = JSON.parse_string(file.get_as_text())
-	file_data = data
-	print(file_data.settings.language)
-	match file_data.settings.language:
-		"en":
+	match int(DataManager.data.settings.language):
+		0:
 			TranslationServer.set_locale("en")
-		"es":
+		1:
 			TranslationServer.set_locale("es")
 	
-	if file_data.items.size() != 0:
-		for i in file_data.items:
-			print(i.item)
-			print(i.type)
+	if DataManager.data.items.size() != 0:
+		for i in DataManager.data.items:
 			add_item(loaded[i.type][i.item + ".png"], tr(i.item.capitalize()), i.id)
-	
+
+
 func add_item(item, namey, id):
 	var l = TextureRect.new()
 	l.texture = item
@@ -371,24 +360,21 @@ func add_item(item, namey, id):
 
 	inv.add_child(l)
 
+
 func _on_money_giver_timeout() -> void:
 	if not on_shop:
-		var money = int(file_data.settings.money)
-		print(money)
-		file_data.settings.money = money + 2
-		var file = FileAccess.open(save_path_data, FileAccess.WRITE)
-		file.store_string(JSON.stringify(file_data, "\t"))
-		file.close()
-		pass
+		var money = int(DataManager.data.settings.money)
+		DataManager.data.settings.money = money + 2
+		DataManager.store_data()
+
 
 func update_mood(happiness, eatingness, sleepiness):
 	if not on_shop:
-		file_data.mood.happiness = happiness
-		file_data.mood.eatingness = eatingness
-		file_data.mood.sleepiness = sleepiness
-		var file = FileAccess.open(save_path_data, FileAccess.WRITE)
-		file.store_string(JSON.stringify(file_data, "\t"))
-		file.close()
+		DataManager.data.mood.happiness = happiness
+		DataManager.data.mood.eatingness = eatingness
+		DataManager.data.mood.sleepiness = sleepiness
+		DataManager.store_data()
+
 
 func delete_item(id):
 	inventoring = false
@@ -404,29 +390,26 @@ func delete_item(id):
 	popup.set_item_disabled(1, false)
 	popup.set_item_disabled(0,false)
 	if mood.eatingness != 100:
-		mood.eatingness += file_data.items[id].heal
+		mood.eatingness += DataManager.data.items[id].heal
 		if mood.eatingness > 100:
 			mood.eatingness = 100
 
-		file_data.items.remove_at(id)
+		DataManager.data.items.remove_at(id)
 
-		for i in range(file_data.items.size()):
-			file_data.items[i].id = i
-
-		var file = FileAccess.open(save_path_data, FileAccess.WRITE)
-		file.store_string(JSON.stringify(file_data, "\t"))
-		file.close()
+		for i in range(DataManager.data.items.size()):
+			DataManager.data.items[i].id = i
+		
+		DataManager.store_data()
 
 		for i in inv.get_children():
 			inv.remove_child(i)
 
-		for i in file_data.items:
-			print(i.item)
-			print(i.type)
+		for i in DataManager.data.items:
 			add_item(loaded[i.type][i.item + ".png"], tr(i.item.capitalize()), i.id)
 	await get_tree().create_timer(1).timeout
 	able_to_pat = true
 	able_to_move = true
+
 
 func _on_button_pressed() -> void:
 	popup.set_item_disabled(0,false)
@@ -435,12 +418,11 @@ func _on_button_pressed() -> void:
 	inv2.visible = false
 	pass
 
+
 func save_pos():
-	file_data.settings.pos.y = DisplayServer.window_get_position().y
-	file_data.settings.pos.x = DisplayServer.window_get_position().x
-	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
-	file.store_string(JSON.stringify(file_data, "\t"))
-	file.close()
+	DataManager.data.settings.last_position.y = DisplayServer.window_get_position().y
+	DataManager.data.settings.last_position.x = DisplayServer.window_get_position().x
+	DataManager.store_data()
 
 
 func _on_popup_popup_hide() -> void:

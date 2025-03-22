@@ -1,6 +1,6 @@
 extends TextureButton
 
-var timetween = 0.7
+const TWEEN = 0.7
 
 @onready var popup = $"../../../../prompt"
 @onready var buysfx = $"../../../../sfx/buy"
@@ -15,21 +15,25 @@ var timetween = 0.7
 
 @onready var anim = $"../../../../anim"
 
-var shaking = false
-
 @export var heal : int
 
-var shake = 70
+var n : String
 
 func _ready() -> void:
 	connect("mouse_entered", Callable(self, "hover"))
 	connect("mouse_exited", Callable(self, "unhover"))
 	connect("pressed", Callable(self,"press"))
 	pivot_offset = size / Vector2(2,2)
-	pass
+
+	var label : Label = get_parent().get_node("label")
+	n = label.text 
+
+	set_name_price()
+
 
 func press():
 	popup.call_prompt(get_node("."))
+
 
 func buy():
 	if money.money >= price:
@@ -38,14 +42,23 @@ func buy():
 		money.update_money()
 		money.update_items(tag,type, heal)
 	else:
-		red()
+		poor()
+
 
 func hover():
-	create_tween().tween_property(self, "scale", Vector2(1.1,1.1), timetween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(self, "scale", Vector2(1.1,1.1), TWEEN).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+
 
 func unhover():
-	create_tween().tween_property(self, "scale", Vector2(1,1), timetween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(self, "scale", Vector2(1,1), TWEEN).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
-func red():
+
+func poor():
 	anim.stop()
 	anim.play("notif")
+
+func set_name_price():
+	var label : Label = get_parent().get_node("label")
+	if label:
+		if !n.is_empty():
+			label.text = "%s (%s$)" % [tr(n), price]

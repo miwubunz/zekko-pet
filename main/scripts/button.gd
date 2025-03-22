@@ -11,6 +11,8 @@ var able = true
 @onready var drinks = $"../../../items/drinks"
 @onready var sett = $"../../../items/settings"
 
+@onready var items_map = {"food": food, "drinks": drinks, "settings": sett}
+
 @onready var og_color = self.get_theme_color("font_color")
 
 func _ready() -> void:
@@ -28,8 +30,6 @@ func _ready() -> void:
 	food.mouse_filter = MOUSE_FILTER_IGNORE
 	drinks.mouse_filter = MOUSE_FILTER_IGNORE
 	sett.mouse_filter = MOUSE_FILTER_IGNORE
-	print(og_color)
-	pass
 
 func enter():
 	if able:
@@ -49,57 +49,28 @@ func clickie():
 		show_items(name)
 
 func deanimate_all():
-	if self.name != "food":
-		unshow_items("food")
-		get_parent().find_child("food").able = true
-		create_tween().tween_property(get_parent().find_child("food"),"position:x", pos,time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		create_tween().tween_property(get_parent().find_child("food"),"theme_override_font_sizes/font_size",40,time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		get_parent().find_child("food").modulate = og_color
-	if self.name != "drinks":
-		unshow_items("drinks")
-		get_parent().find_child("drinks").able = true
-		create_tween().tween_property(get_parent().find_child("drinks"),"position:x", pos,time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		create_tween().tween_property(get_parent().find_child("drinks"),"theme_override_font_sizes/font_size",40,time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		get_parent().find_child("drinks").modulate = og_color
-	if self.name != "settings":
-		unshow_items("settings")
-		get_parent().find_child("settings").able = true
-		create_tween().tween_property(get_parent().find_child("settings"),"position:x", pos,time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		create_tween().tween_property(get_parent().find_child("settings"),"theme_override_font_sizes/font_size",40,time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		get_parent().find_child("settings").modulate = og_color
+	var items = ["food", "drinks", "settings"]
+	for item in items:
+		if self.name != item:
+			unshow_items(item)
+			var node = get_parent().find_child(item)
+			node.able = true
+			create_tween().tween_property(node, "position:x", pos, time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+			create_tween().tween_property(node, "theme_override_font_sizes/font_size", 40, time_tween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+			node.modulate = og_color
 
 func show_items(what):
-	match what:
-		"food":
-			ignoreorpass(food, MOUSE_FILTER_PASS)
-			create_tween().tween_property(food, "position", Vector2(66,58), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-			create_tween().tween_property(food, "modulate:a", 1,0.3).connect("finished", Callable(self, "reenable"))
-		"drinks":
-			ignoreorpass(drinks, MOUSE_FILTER_PASS)
-			create_tween().tween_property(drinks, "position", Vector2(66,58), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-			create_tween().tween_property(drinks, "modulate:a", 1, 0.3).connect("finished", Callable(self, "reenable"))
-		"settings":
-			ignoreorpass(sett, MOUSE_FILTER_PASS)
-			create_tween().tween_property(sett, "position", Vector2(66,58), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-			create_tween().tween_property(sett, "modulate:a", 1, 0.3).connect("finished", Callable(self, "reenable"))
+	var node = items_map[what]
+	ignoreorpass(node, MOUSE_FILTER_PASS)
+	create_tween().tween_property(node, "position", Vector2(66, 58), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(node, "modulate:a", 1, 0.3).connect("finished", Callable(self, "reenable"))
 
 func unshow_items(what):
-	match what:
-		"food":
-			ignoreorpass(food, MOUSE_FILTER_IGNORE)
-			food.mouse_filter = MOUSE_FILTER_IGNORE
-			create_tween().tween_property(food, "position", Vector2(66,80), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-			create_tween().tween_property(food, "modulate:a", 0, 0.3)
-		"drinks":
-			ignoreorpass(drinks, MOUSE_FILTER_IGNORE)
-			drinks.mouse_filter = MOUSE_FILTER_IGNORE
-			create_tween().tween_property(drinks, "position", Vector2(66,80), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-			create_tween().tween_property(drinks, "modulate:a", 0, 0.3)
-		"settings":
-			ignoreorpass(sett, MOUSE_FILTER_IGNORE)
-			sett.mouse_filter = MOUSE_FILTER_IGNORE
-			create_tween().tween_property(sett, "position", Vector2(66,80), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-			create_tween().tween_property(sett, "modulate:a", 0, 0.3)
+	var node = items_map[what]
+	ignoreorpass(node, MOUSE_FILTER_IGNORE)
+	node.mouse_filter = MOUSE_FILTER_IGNORE
+	create_tween().tween_property(node, "position", Vector2(66, 80), time_tween2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(node, "modulate:a", 0, 0.3)
 
 func ignoreorpass(e, a) -> void:
 	for i in e.get_children():

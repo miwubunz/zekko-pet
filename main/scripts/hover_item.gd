@@ -21,10 +21,8 @@ func _ready() -> void:
 	connect("mouse_entered", Callable(self, "hover"))
 	connect("mouse_exited", Callable(self, "unhover"))
 	tooltiptxt.modulate.a = 0
-	print(str(id) + tag)
-	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var pos = get_global_mouse_position() - offset
 	tooltiptxt.position = lerp(tooltiptxt.position, pos, spd)
 	bg.position = lerp(tooltiptxt.position, pos, spd)
@@ -45,5 +43,4 @@ func unhover():
 	hovering = false
 
 func press():
-	print("sas")
 	control.delete_item(id)

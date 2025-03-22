@@ -1,33 +1,33 @@
 key,en,es
 WELCOME_1,"Hi, I'm zekko.","Holi, soy zekko."
 WELCOME_2,"Please, take care of me.","Porfa, cuida de mí."
-OPT_1,chat,charlar
-OPT_2,feed,alimentar
-OPT_3,shop,tienda
-OPT_4,settings,ajustes
-OPT_5,quit,salir
-FOOD,food,comida
-DRINKS,drinks,bebidas
-SETT,settings,ajustes
-MUS,music,música
-MUTE,no music (MUTE),sin música (SILENCIO)
-AGE,age: ,edad: 
+OPT_1,Chat,Charlar
+OPT_2,Feed,Alimentar
+OPT_3,Shop,Tienda
+OPT_4,Settings,Ajustes
+OPT_5,Quit,Salir
+FOOD,Food,Comida
+DRINKS,Drinks,Bebidas
+SETT,Settings,Ajustes
+MUS,Music,Música
+MUTE,No music (MUTE),Sin música (SILENCIO)
+AGE,Age: ,Edad: 
 YEAR, year, año
 MONTH, month, mes
 WEEK, week, semana
 DAY, day, día
 PLURAL,s,es
-BURGER,burger,hamburguesa
-PIZZA,pizza,pizza
-FRIES,fries,papas fritas
-COOKIES,cookies,galletitas
-APPLE,red apple,manzana roja
-BREAD,bread,pan
-WATER,water,agua
-COLA,cola,cola
-JUICE,juice,jugo
-TEA,tea,té
-COFFEE,coffee,café
+BURGER,Burger,Hamburguesa
+PIZZA,Pizza,Pizza
+FRIES,Fries,Papas Fritas
+COOKIES,Cookies,Galletitas
+APPLE,Red Apple,Manzana Roja
+BREAD,Bread,Pan
+WATER,Water,Agua
+COLA,Cola,Cola
+JUICE,Juice,Jugo
+TEA,Tea,Té
+COFFEE,Coffee,Café
 POKE_1,>////<,>////<
 POKE_2,Hehe~,Jiji~
 POKE_3,[i]giggle[/i],[i]risita[/i]
@@ -117,5 +117,32 @@ HUNGRY_16,"If I could wish for anything, it’d be snacks... and more snacks! :3
 LANG,Language,Idioma
 BUY_1,[center]You [shake rate=180.0 level=30]surely[/shake] wanna buy [wave amp=50.0][b][i],[center]¿[shake rate=180.0 level=30]Seguro[/shake] que quieres comprar [wave amp=50.0][b][i]
 POOR,poor,pobre
-SLEEP,sleep,dormir
-WAKE,wake up,despertar
+SLEEP,Sleep,Dormir
+WAKE,Wake up,Despertar
+CREDITS,"[b]Credits[/b]
+[i]Programmers[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] [b][i]- main programmer[/i][/b]
+[i]UI[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] 
+[i]Artists[/i]
+[url=https://x.com/laudi122]lauta[/url] [b][i]- food and zekko sprites[/i][/b]
+[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- some ui icons[/i][/b]
+[i]Translators[/i]
+[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- spanish[/i][/b]
+[i]Writers[/i]
+[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- zekko's quotes[/i][/b]
+[i]Shaders[/i]
+[url=https://godotshaders.com/author/acgc99/]acgc99[/url] [b][i]- rounded image corners[/i][/b]","[b]Créditos[/b]
+[i]Programadores[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] [b][i]- programadora principal[/i][/b]
+[i]Interfaz[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] 
+[i]Artistas[/i]
+[url=https://x.com/laudi122]lauta[/url] [b][i]- sprites de comida y de zekko[/i][/b]
+[url=https://github.com/miwubunz]miwubunz[/url] [b][i]- algunos iconos de la interfaz[/i][/b]
+[i]Traductores[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] [b][i]- español[/i][/b]
+[i]Escritores[/i]
+[url=https://github.com/miwubunz]miwubunz[/url] [b][i]- diálogos de zekko[/i][/b]
+[i]Shaders[/i]
+[url=https://godotshaders.com/author/acgc99/]acgc99[/url] [b][i]- shader de sprites con esquinas redondas[/i][/b]"

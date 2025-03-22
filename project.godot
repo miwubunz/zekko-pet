@@ -12,15 +12,18 @@ config_version=5
 
 config/name="zekko-pet"
 config/description="pet"
+config/version="1.5"
 run/main_scene="res://main/scenes/startup.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 0)
 boot_splash/show_image=false
-config/icon="res://icon.png"
+config/icon="uid://dhusqucycumrp"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 controller="*res://main/scenes/controller.tscn"
+DataManager="*res://main/scripts/data_manager.gd"
 
 [display]
 

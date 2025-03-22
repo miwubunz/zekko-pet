@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://egggkl5tudl4"]
 
-[ext_resource type="Script" path="res://main/scripts/controller.gd" id="1_l7s5u"]
+[ext_resource type="Script" uid="uid://bt4g1luklwufd" path="res://main/scripts/controller.gd" id="1_l7s5u"]
 
 [node name="controller" type="Control"]
 modulate = Color(1, 1, 1, 0)

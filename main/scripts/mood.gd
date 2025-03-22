@@ -10,7 +10,8 @@ var late = false
 
 @onready var control = $".."
 
-func _process(delta: float) -> void:
+
+func _process(_delta: float) -> void:
 	time = Time.get_time_string_from_system().split(":")
 	if int(time[0]) < 24 and int(time[0]) < 08:
 		late = true

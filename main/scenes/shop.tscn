@@ -1,37 +1,36 @@
-[gd_scene load_steps=48 format=3 uid="uid://c582vgtca0w40"]
+[gd_scene load_steps=47 format=3 uid="uid://c582vgtca0w40"]
 
-[ext_resource type="Script" path="res://main/scripts/shop.gd" id="1_rxbqu"]
+[ext_resource type="Script" uid="uid://3b3vci7yhidf" path="res://main/scripts/shop.gd" id="1_rxbqu"]
 [ext_resource type="FontFile" uid="uid://bk7uc16cbiy0s" path="res://main/fonts/Nunito-SemiBold.ttf" id="1_ufa3m"]
-[ext_resource type="Script" path="res://main/scripts/button.gd" id="3_40fc4"]
+[ext_resource type="Script" uid="uid://d2uxg0rhavwq8" path="res://main/scripts/button.gd" id="3_40fc4"]
 [ext_resource type="Texture2D" uid="uid://dkfmwjwcqf7yg" path="res://main/sprites/rin_body.png" id="3_hvoox"]
 [ext_resource type="StyleBox" uid="uid://bkcsjqyb6ce6h" path="res://main/styles/button.tres" id="3_qxj4v"]
 [ext_resource type="FontFile" uid="uid://dfrr1xexy0vwh" path="res://main/fonts/Nunito-BlackItalic.ttf" id="4_7xuxn"]
 [ext_resource type="FontFile" uid="uid://d2rjhhxv5xkdi" path="res://main/fonts/Nunito-SemiBoldItalic.ttf" id="5_e1fsc"]
-[ext_resource type="Script" path="res://main/scripts/age.gd" id="6_7m38r"]
+[ext_resource type="Script" uid="uid://dl672ghia0dbm" path="res://main/scripts/age.gd" id="6_7m38r"]
 [ext_resource type="Texture2D" uid="uid://cl70sgoi18xps" path="res://main/anims/blush/blush0001.png" id="7_55bed"]
 [ext_resource type="Theme" uid="uid://c6inigjygdrks" path="res://main/themes/dropdown.tres" id="10_egrjg"]
 [ext_resource type="StyleBox" uid="uid://cna8v5ygkmpme" path="res://main/styles/button2.tres" id="10_nu85t"]
 [ext_resource type="Texture2D" uid="uid://dnhbyn31hwq4r" path="res://main/sprites/food/burger.png" id="11_ie3kr"]
-[ext_resource type="Script" path="res://main/scripts/change_font.gd" id="11_y8tpw"]
 [ext_resource type="FontFile" uid="uid://kyvppm4lb7jl" path="res://main/fonts/Nunito-ExtraBold.ttf" id="12_7lko2"]
 [ext_resource type="Texture2D" uid="uid://bqaeh8t1hvje1" path="res://main/sprites/food/pizza.png" id="13_27gis"]
 [ext_resource type="Texture2D" uid="uid://c4dtf6jksckvg" path="res://main/sprites/food/fries.png" id="15_6kmjk"]
 [ext_resource type="Texture2D" uid="uid://8cbdfhk5ih2" path="res://main/sprites/food/cookies.png" id="16_goduy"]
 [ext_resource type="Texture2D" uid="uid://dgm6qekxcrqmk" path="res://main/sprites/food/apple.png" id="17_a34o8"]
 [ext_resource type="Texture2D" uid="uid://c2hbuq7xi3ajf" path="res://main/sprites/food/bread.png" id="18_g3w4y"]
-[ext_resource type="Script" path="res://main/scripts/item.gd" id="19_s58jj"]
+[ext_resource type="Script" uid="uid://bu6l40hkvqlj3" path="res://main/scripts/item.gd" id="19_s58jj"]
 [ext_resource type="Texture2D" uid="uid://chy62h2d7qavx" path="res://main/sprites/drinks/water.png" id="20_yhjh0"]
 [ext_resource type="Texture2D" uid="uid://b0w5o3rwwb8gs" path="res://main/sprites/drinks/cola.png" id="21_tkqhx"]
 [ext_resource type="Texture2D" uid="uid://cu6hkftu5xw0o" path="res://main/sprites/drinks/juice.png" id="22_k2gap"]
 [ext_resource type="Texture2D" uid="uid://bl6e8no82v056" path="res://main/sprites/drinks/tea.png" id="23_dodw6"]
 [ext_resource type="Texture2D" uid="uid://cnnsg8uimocyq" path="res://main/sprites/drinks/coffee.png" id="24_4bmk5"]
 [ext_resource type="FontFile" uid="uid://bnwxv70lrkpri" path="res://main/fonts/Nunito-Regular.ttf" id="24_xmufe"]
-[ext_resource type="Script" path="res://main/scripts/yus_or_nah.gd" id="25_5rfp3"]
+[ext_resource type="Script" uid="uid://dqmsfq3omxdhx" path="res://main/scripts/yus_or_nah.gd" id="25_5rfp3"]
 [ext_resource type="FontFile" uid="uid://d3mmwmvyhggmn" path="res://main/fonts/Nunito-Black.ttf" id="25_65co4"]
 [ext_resource type="FontFile" uid="uid://bhda25a683q7r" path="res://main/fonts/Nunito-Bold.ttf" id="25_d6yfh"]
 [ext_resource type="FontFile" uid="uid://db7wty6sb6r3i" path="res://main/fonts/Nunito-BoldItalic.ttf" id="25_hl1qd"]
 [ext_resource type="FontFile" uid="uid://b7w85y3rlbbew" path="res://main/fonts/Nunito-LightItalic.ttf" id="26_g0nqd"]
-[ext_resource type="Script" path="res://main/scripts/meta.gd" id="28_sxaq7"]
+[ext_resource type="Script" uid="uid://c2ti6t6vh1nb7" path="res://main/scripts/meta.gd" id="28_sxaq7"]
 [ext_resource type="Texture2D" uid="uid://bw7xwdtin48dg" path="res://main/sprites/money.png" id="28_ywer8"]
 [ext_resource type="AudioStream" uid="uid://cjk765em0hj4n" path="res://main/sounds/untijjtled.wav" id="31_vsao2"]
 
@@ -138,8 +137,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhsrn"]
 _data = {
-"RESET": SubResource("Animation_voxgr"),
-"notif": SubResource("Animation_kagms")
+&"RESET": SubResource("Animation_voxgr"),
+&"notif": SubResource("Animation_kagms")
 }
 
 [node name="Control" type="Control"]
@@ -182,8 +181,8 @@ offset_bottom = 976.0
 [node name="food" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.831373, 0.745098, 0.596078, 1)
-theme_override_colors/font_pressed_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_colors/font_color = Color(0.831373, 0.745098, 0.596078, 1)
+theme_override_colors/font_pressed_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_fonts/font = ExtResource("1_ufa3m")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mebui")
@@ -199,8 +198,8 @@ script = ExtResource("3_40fc4")
 [node name="drinks" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.831373, 0.745098, 0.596078, 1)
-theme_override_colors/font_pressed_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_colors/font_color = Color(0.831373, 0.745098, 0.596078, 1)
+theme_override_colors/font_pressed_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_fonts/font = ExtResource("1_ufa3m")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ilm7c")
@@ -215,8 +214,8 @@ script = ExtResource("3_40fc4")
 [node name="settings" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.831373, 0.745098, 0.596078, 1)
-theme_override_colors/font_pressed_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_colors/font_color = Color(0.831373, 0.745098, 0.596078, 1)
+theme_override_colors/font_pressed_color = Color(0.831373, 0.745098, 0.596078, 1)
 theme_override_fonts/font = ExtResource("1_ufa3m")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_463l6")
@@ -240,7 +239,7 @@ texture = ExtResource("3_hvoox")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/TextureRect"]
+[node name="name" type="RichTextLabel" parent="Control/TextureRect"]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 6.0
@@ -272,10 +271,10 @@ script = ExtResource("6_7m38r")
 
 [node name="TextureRect" type="TextureRect" parent="Control/TextureRect"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 15.0
-offset_right = 57.0
-offset_bottom = 45.0
+offset_left = 7.0
+offset_top = 19.0
+offset_right = 52.0
+offset_bottom = 44.0
 texture = ExtResource("7_55bed")
 expand_mode = 1
 stretch_mode = 4
@@ -299,6 +298,7 @@ flat = false
 item_count = 6
 popup/item_0/text = "MUTE"
 popup/item_0/checkable = 2
+popup/item_0/id = 0
 popup/item_1/text = "shop1"
 popup/item_1/checkable = 2
 popup/item_1/id = 1
@@ -314,7 +314,6 @@ popup/item_4/id = 4
 popup/item_5/text = "shop5"
 popup/item_5/checkable = 2
 popup/item_5/id = 5
-script = ExtResource("11_y8tpw")
 
 [node name="bg" type="AudioStreamPlayer" parent="."]
 bus = &"music"
@@ -679,6 +678,7 @@ item_count = 2
 popup/item_0/text = "English"
 popup/item_0/checkable = 2
 popup/item_0/checked = true
+popup/item_0/id = 0
 popup/item_1/text = "Español"
 popup/item_1/checkable = 2
 popup/item_1/id = 1
@@ -699,20 +699,7 @@ theme_override_font_sizes/italics_font_size = 60
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 70
 bbcode_enabled = true
-text = "[b]credits[/b]
-[i]programmers[/i]
-[url=https://github.com/miwubunz]miwubunz[/url] [b][i]- main programmer[/i][/b]
-[i]ui[/i]
-[url=https://github.com/miwubunz]miwubunz[/url] 
-[i]artist[/i]
-[url=https://x.com/laudi122]lauta[/url] [b][i]- food and zekko sprites[/i][/b]
-[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- some ui icons[/i][/b]
-[i]translators[/i]
-[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- spanish[/i][/b]
-[i]writers[/i]
-[url=https://github.com/miwubunz]miwubunz[/url]  [b][i]- zekko's quotes[/i][/b]
-[i]shaders[/i]
-[url=https://godotshaders.com/author/acgc99/]acgc99[/url] [b][i]- rounded image corners[/i][/b]"
+text = "CREDITS"
 script = ExtResource("28_sxaq7")
 
 [node name="prompt" type="Control" parent="."]
@@ -811,7 +798,7 @@ stretch_mode = 4
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bhsrn")
+&"": SubResource("AnimationLibrary_bhsrn")
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]

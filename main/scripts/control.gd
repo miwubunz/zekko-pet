@@ -1,9 +1,8 @@
 extends Control
 
 var timer = 0
-var save_path = "user://date.inf"
-var save_path_data = "user://data.inf"
 
+const path = "user://data.inf"
 @onready var controluwu = $Control
 @onready var anims = $Control/AnimationPlayer
 
@@ -14,7 +13,9 @@ var save_path_data = "user://data.inf"
 @onready var arrow = $arrow
 @onready var x = $x
 
-var g = false # variable that will activate the dialogue when true
+@onready var zekko = $zekko
+
+var dialogue_indicator = false # variable that will activate the dialogue when true
 
 var index = 0
 @onready var txt = $txt
@@ -30,9 +31,9 @@ var reset = 0.02 # timer value
 
 var able = false
 
-var timetween = 0.7
+const TWEEN = 0.7
 
-var l = false # variable so that a tween doesnt keep tweening every frame 
+var tweening = false # variable so that a tween doesnt keep tweening every frame
 
 var toanim = 0 # whether the arrow or x sprite should be animated
 
@@ -50,15 +51,17 @@ func _ready() -> void:
 	txt.text = sentences[sentencearray]
 	arrow.modulate.a = 0
 	x.modulate.a = 0
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.5).timeout
+	create_tween().tween_property(zekko, "modulate:a", 1, TWEEN)
+	await get_tree().create_timer(1.5).timeout
 	txt.visible = true
-	g = true
-	save()
-	save_data()
+	dialogue_indicator = true
+
+	if !FileAccess.file_exists(path):
+		DataManager.create_file()
 
 func _process(delta: float) -> void:
-	print(sentencearray)
-	if timer != null and g:
+	if timer != null and dialogue_indicator:
 		timer -= 1 * delta
 		if timer < 0 and !finished:
 			if index <= txt.get_parsed_text().length():
@@ -71,79 +74,43 @@ func _process(delta: float) -> void:
 			else:
 				timer = 2 # delay before setting the next sentence
 				finished = true
-		if timer < 0 and finished and !l:
+		if timer < 0 and finished and !tweening:
 			open.play()
-			openthing()
+			open_indicator()
 			able = true
-			l = true
+			tweening = true
 			await get_tree().create_timer(1.5).timeout
-			if sentencearray != sentences.size() - 1 and finished and g:
+			if sentencearray != sentences.size() - 1 and finished and dialogue_indicator:
 				closer()
-			elif sentencearray >= sentences.size() - 1 and finished and g:
+			elif sentencearray >= sentences.size() - 1 and finished and dialogue_indicator:
 				close_more()
 	
 
-	elif Input.is_action_just_pressed("enter") and !finished and g:
+	elif Input.is_action_just_pressed("enter") and !finished and dialogue_indicator:
 		open.play()
 		timer = null
 		finished = true
 		txt.visible_characters = txt.text.length()
 		index = txt.text.length()
 		able = true
-		openthing()
+		open_indicator()
 
 func talksound():
-	var e = randf_range(0.9,1.1)
-	talksfx.pitch_scale = e
+	var random_ = randf_range(0.9,1.1)
+	talksfx.pitch_scale = random_
 	talksfx.play()
 
-func save():
-	if !FileAccess.file_exists(save_path):
-		print("saved :3")
-		var file = FileAccess.open(save_path, FileAccess.WRITE)
-		file.store_string(Time.get_date_string_from_system())
-	else:
-		print("file already exists :p")
-
-func save_data():
-	var data = {
-		"items": [],
-		"mood": {
-			"happiness": 100,
-			"eatingness": 100,
-			"sleepiness": 0
-		},
-		"settings": {
-			"language": "en",
-			"money": 250,
-			"music": 0,
-			"vol": 17,
-			"pos": {
-				"x": null,
-				"y": null
-			}
-		}
-	}
-	
-	var file = FileAccess.open(save_path_data, FileAccess.WRITE)
-	var json = JSON.stringify(data, "\t")
-	
-	file.store_line(json)
-	
-	file.close()
-	
-	print("saved :3")
-
 func bye():
+	create_tween().tween_property(zekko, "modulate:a", 0, TWEEN)
 	await get_tree().create_timer(1).timeout
 	anims.play("k")
 	controluwu.visible = true
 
 func closer():
 	close.play()
-	l = false
+	tweening = false
 	able = false
-	closething()
+	close_indicator()
 	timer = reset
 	sentencearray += 1
 	txt.visible_characters = 0
@@ -155,32 +122,32 @@ func closer():
 
 func close_more():
 	close.play()
-	create_tween().tween_property(txt, "modulate:a", 0, timetween)
+	create_tween().tween_property(txt, "modulate:a", 0, TWEEN)
 	able = false
-	closething()
+	close_indicator()
 	bye()
 
 #region animations
-func openthing():
+func open_indicator():
 	match toanim:
 		0:
 			arrow.bounce()
 			arrow.modulate.a = 1
 			arrow.scale.y = 1.5
-			create_tween().tween_property(arrow, "scale:y", 1, timetween).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+			create_tween().tween_property(arrow, "scale:y", 1, TWEEN).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		1:
 			x.bounce()
 			x.modulate.a = 1
 			x.scale.y = 1.5
-			create_tween().tween_property(x, "scale:y", 1, timetween).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+			create_tween().tween_property(x, "scale:y", 1, TWEEN).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 
-func closething():
+func close_indicator():
 	match toanim:
 		0:
-			create_tween().tween_property(arrow, "scale:y", 1.5, timetween).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+			create_tween().tween_property(arrow, "scale:y", 1.5, TWEEN).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 			create_tween().tween_property(arrow, "modulate:a", 0, 0.2)
 		1:
-			create_tween().tween_property(x, "scale:y", 1.5, timetween).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+			create_tween().tween_property(x, "scale:y", 1.5, TWEEN).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 			create_tween().tween_property(x, "modulate:a", 0, 0.2)
 #endregion
 
