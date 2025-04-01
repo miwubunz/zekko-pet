@@ -40,7 +40,6 @@ var delayed_symbols = [",", ".", "!", "?"]
 
 var tweening = false # variable so that a tween doesnt keep tweening every frame
 
-
 func _ready() -> void:
 	TranslationServer.set_locale("en")
 	
@@ -104,7 +103,6 @@ func say_rndm():
 	await get_tree().create_timer(0.3).timeout
 	dialogue_indicator = true
 
-
 func sntc(bef, all, happy):
 	var tweening = randi_range(1, 3) if mood.happiness > 30 else randi_range(1, 2)
 	
@@ -120,7 +118,6 @@ func sntc(bef, all, happy):
 			sentence = tr(happy + str(random_))
 	
 	txt.text = sentence
-
 
 func mood_controller():
 	if !dialogue_indicator and control.state != control.states.SLEEPING:
@@ -164,7 +161,6 @@ func mood_controller():
 		await get_tree().create_timer(0.3).timeout
 		dialogue_indicator = true
 
-
 func age():
 	var date = DataManager.data.user.creation_date
 	var result = date.split("-")
@@ -198,12 +194,10 @@ func unshow():
 		close_anim()
 		dialogue_indicator = false
 
-
 #region animations
 func open_anim():
 	create_tween().tween_property(bg, "scale", Vector2(0,0), 0)
 	create_tween().tween_property(bg, "scale", Vector2(1.1,1.1), timetween).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-
 
 func close_anim():
 	create_tween().tween_property(bg, "scale", Vector2(1.1,1.1), 0)
